@@ -70,7 +70,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="admin\addproduct.aspx" />
     <Content Include="admin\assets\css\doashboard.css" />
     <Content Include="admin\customer.aspx" />
     <Content Include="assets\css\base.css" />
@@ -7839,13 +7838,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="admin\addproduct.aspx.cs">
-      <DependentUpon>addproduct.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\addproduct.aspx.designer.cs">
-      <DependentUpon>addproduct.aspx</DependentUpon>
-    </Compile>
     <Compile Include="admin\customer.aspx.cs">
       <DependentUpon>customer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
