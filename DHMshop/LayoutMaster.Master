@@ -1,0 +1,302 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="LayoutMaster.master.cs" Inherits="DHMshop.LayoutMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="assets/css/grid.css" rel="stylesheet" />
+    <link href="assets/css/main.css" rel="stylesheet" />
+    <link href="assets/css/normalize.css" rel="stylesheet" />
+    <link href="assets/css/base.css" rel="stylesheet" />
+    <link href="assets/fonts/fontawesome-pro-5.12.0-web/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap&subset=vietnamese" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="navbar">
+                <div class="grid wide full-wrap">
+                    <div class="navbar-wrap ">
+                        <div class="navbar-header">
+                            <label for="menu-check" class="navbar-toggle">
+                                <i class="navbar-toggle-icon fas fa-bars"></i>
+                            </label>
+                            <input type="checkbox" hidden id="menu-check" name="" />
+                            <a class="navbar-logo" runat="server" href="home.aspx">DHMShop</a>
+                            <label for="menu-check" class="navbar-overlay"></label>
+                            <!--begin NAV mobile,table -->
+                            <div class="navbar-mobile-collapse">
+                                <label class="navbar-mobile-close" for="menu-check">
+                                    <i class="navbar-mobile-close-icon far fa-times-circle"></i>
+                                </label>
+                                <ul class="navbar-moblie-menu">
+                                    <li class="nav-moblie-menu-item">
+                                        <a class="nav-moblie-menu-item-link" href="#">Trang Chủ</a>
+                                    </li>
+                                    <li class="nav-moblie-menu-item">
+                                        <a class="nav-moblie-menu-item-link" href="#">Sản phẩm</a>
+                                        <ul class="nav-moblie-sub-menu">
+                                            <li class="sub-nav-moblie-menu-item">
+                                                <a class="sub-nav-moblie-menu-item-link" onclick="preventDefault()">Giày nam</a>
+                                            </li>
+                                            <li class="sub-nav-moblie-menu-item">
+                                                <a class="sub-nav-moblie-menu-item-link" href="#">Giày nữ</a>
+                                            </li>
+                                            <li class="sub-nav-moblie-menu-item">
+                                                <a class="sub-nav-moblie-menu-item-link" href="#">Giày thể thao</a>
+                                            </li>
+                                            <li class="sub-nav-moblie-menu-item">
+                                                <a class="sub-nav-moblie-menu-item-link" href="#">Giày Sneaker</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="nav-moblie-menu-item">
+                                        <a class="nav-moblie-menu-item-link" runat="server" onclick="preventDefault()">Giới thiệu</a>
+                                    </li>
+                                    <li class="nav-moblie-menu-item">
+                                        <a class="nav-moblie-menu-item-link" runat="server" onclick="preventDefault()">Liên hệ</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--end NAV mobile,table -->
+                        </div>
+                        <!--begin NAV PC -->
+                        <div id="nav" class="navbar-collapse collapse hide-on-mobile-tablet" runat="server">
+                            <ul class="nav navbar-menu">
+                                <li class="menu-item">
+                                    <a class="menu-item-link" runat="server" href="#">
+                                        <i class="fas fa-home"></i>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a class="menu-item-link" runat="server" href="#">Sản phẩm</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a class="menu-item-link" runat="server" href="#">Giới thiệu</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a class="menu-item-link" runat="server" href="#">Liên hệ</a>
+                                </li>
+                            </ul>
+                            <div class="nav nav-avatar">
+                                <div class="cart-wrap nav-avatar-wrap">
+                                    <div class="header__cart">
+                                        <div class="header__cart-wrap">
+                                            <i class="header__cart-icon fas fa-shopping-cart"></i>
+                                            <div class="header__cart-notice">4</div>
+                                            <!-- No cart add class: header__cart-list--no-cart -->
+                                            <div class="header__cart-list ">
+                                                <img src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/f3540f6657bbdc1120e3f8cc90bdba97.png" alt="" class="header__cart-no-cart-img">
+                                                <span class="header__cart-no-cart-msg">Chưa có sản phẩm!</span>
+                                                <h3 class="header__cart-heading">Sản phẩm đã thêm</h3>
+                                                <ul class="header__cart-list-item">
+                                                    <li class="header__cart-item">
+                                                        <img src="https://cf.shopee.vn/file/5fac5dfb5e5ec3301c00a739760165ef_tn" alt="" class="header__cart-img">
+                                                        <div class="header__cart-item-info">
+                                                            <div class="header__cart-item-head">
+                                                                <h3 class="header__cart-item-name">Tai Nghe HTC E240 Pro Siêu Bass Dành Cho AE PUBG Mobile</h3>
+                                                                <div class="header__cart-item-price-wrap">
+                                                                    <span class="header__cart-item-price">2.000.000đ</span>
+                                                                    <span class="header__cart-item-multiply">x</span>
+                                                                    <span class="header__cart-item-qnt">2</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="header__cart-item-body">
+                                                                <span class="header__cart-item-desciption">Phân loại hàng: Trắng</span>
+                                                                <span class="header__cart-item-remove">Xoá</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <a class="btn btn--primary header__cart-btn">Xem Giỏ Hàng</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item nav-avatar-wrap">
+                                 <%--<a href="/Login.aspx" class="nav-avatar__link"> Đăng nhập | Đăng ký </a> --%>
+                                <div class="nav-avatar__user">Mai Hoa</div>
+                                <ul class="nav-sub-menu nav-avatar__list">
+                                    <li class="sub-menu-item nav-avatar__list-item">
+                                        <a href="#" class="sub-menu-item-link nav-avatar__item-link">Tài khoản của tôi </a>
+                                    </li>
+                                    <li class="sub-menu-item nav-avatar__list-item">
+                                        <a href="#" class="sub-menu-item-link nav-avatar__item-link">Đơn mua </a>
+                                    </li>
+                                    <li class="sub-menu-item nav-avatar__list-item">
+                                        <a href="#" class="sub-menu-item-link nav-avatar__item-link">Đăng xuất </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End NAV PC -->
+                </div>
+            </div>
+        </header>
+        <main class="main-content">
+            <form id="form1" runat="server">
+                <div>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </form>
+        </main>
+    <footer class="footer">
+            <div class="grid">
+                <div class="grid__row">
+                    <div class="grid__column-1-4">
+                        <h3 class="footer__heading">Chăm sóc khách hàng</h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Trung tâm trợ giúp
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    DMH Blog
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    DMH Mail
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Hướng dẫn mua hàng
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Hướng dẫn bán hàng
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Chăm sóc khách hàng
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Trả hàng & Hoàn tiền
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Chính sách bảo hành
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid__column-1-4">
+                        <h3 class="footer__heading">VỀ DMH</h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Giới thiệu về DMH Việt Nam
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Tuyển dụng
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Điều khoản Shopee
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Chính sách bảo mật
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Chính hãng
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Kênh người bán
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Flash sales
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="grid__column-1-4">
+                        <h3 class="footer__heading">THANH TOÁN</h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Trung tâm trợ giúp
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Shopee Blog
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Shoppe Mail
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Hướng dẫn mua hàng
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    Hướng dẫn bán hàng
+                                </a>
+                            </li>
+                           
+                        </ul>
+                    </div>
+
+                    <div class="grid__column-1-4">
+                        <h3 class="footer__heading">THEO DÕI CHÚNG TÔI TRÊN</h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    <i class="footer-item__icon fab fa-facebook" aria-hidden="true"></i>
+                                    Facebook
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    <i class="footer-item__icon fab fa-instagram" aria-hidden="true"></i>
+                                    Instagram
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="#" class="footer-item__link">
+                                    <i class="footer-item__icon fab fa-linkedin" aria-hidden="true"></i>
+                                    LinkedIn
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="grid__row">
+                    <div class="footer__text">©2020 - Bản quyền thuộc về Công ty TNHH DHM</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
