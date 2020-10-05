@@ -70,8 +70,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin\add-product.aspx" />
     <Content Include="admin\assets\css\doashboard.css" />
     <Content Include="admin\customer.aspx" />
+    <Content Include="admin\edit-product.aspx" />
+    <Content Include="admin\products.aspx" />
     <Content Include="assets\css\base.css" />
     <Content Include="assets\css\grid.css" />
     <Content Include="assets\css\main.css" />
@@ -7838,6 +7841,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin\add-product.aspx.cs">
+      <DependentUpon>add-product.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\add-product.aspx.designer.cs">
+      <DependentUpon>add-product.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\customer.aspx.cs">
       <DependentUpon>customer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -7845,12 +7855,26 @@
     <Compile Include="admin\customer.aspx.designer.cs">
       <DependentUpon>customer.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\edit-product.aspx.cs">
+      <DependentUpon>edit-product.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\edit-product.aspx.designer.cs">
+      <DependentUpon>edit-product.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\LayoutAdmin.Master.cs">
       <DependentUpon>LayoutAdmin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\LayoutAdmin.Master.designer.cs">
       <DependentUpon>LayoutAdmin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="admin\products.aspx.cs">
+      <DependentUpon>products.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\products.aspx.designer.cs">
+      <DependentUpon>products.aspx</DependentUpon>
     </Compile>
     <Compile Include="DataConnect.cs" />
     <Compile Include="Global.asax.cs">
@@ -7969,6 +7993,7 @@
     <Folder Include="App_GlobalResources\" />
     <Folder Include="assets\img\" />
     <Folder Include="assets\js\" />
+    <Folder Include="public\product\image\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
