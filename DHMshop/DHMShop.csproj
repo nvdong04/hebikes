@@ -7993,7 +7993,7 @@
     <Folder Include="App_GlobalResources\" />
     <Folder Include="assets\img\" />
     <Folder Include="assets\js\" />
-    <Folder Include="public\product\image\" />
+    <Folder Include="public\image\product\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

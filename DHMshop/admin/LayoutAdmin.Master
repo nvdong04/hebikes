@@ -49,26 +49,27 @@
                     </li>
                     <li class="nav-menu__item">
                         <a href="#" class="nav-menu__item-link">
-                            Tin Tức
+                            Sản phẩm
                             <i class="fas fa-sort-down nav-menu__item-icon"></i>
                         </a>
                         <ul class="sub-menu__list">
                             <li class="sub-menu__item">
-                                <a href="danhsachtintuc" class="sub-menu__item-link">
+                                <a href="products.aspx" class="sub-menu__item-link">
                                     <i class="fas fa-angle-right"></i>
                                     Danh sách</a>
                             </li>
                             <li class="sub-menu__item">
 
-                                <a href="themtintuc" class="sub-menu__item-link">
+                                <a href="add-product.aspx" class="sub-menu__item-link">
                                     <i class="fas fa-angle-right"></i>
                                     Thêm</a>
                             </li>
+
                         </ul>
                     </li>
                     <li class="nav-menu__item">
                         <a href="#" class="nav-menu__item-link">
-                            Danh Mục
+                            Đơn hàng
                             <i class="fas fa-sort-down nav-menu__item-icon"></i>
                         </a>
                         <ul class="sub-menu__list">
@@ -115,8 +116,7 @@
             </asp:ContentPlaceHolder>
         </div>
     </form>
-    <script type="text/javascript">
-        CKEDITOR.replace('txtNoiDung');
+    <script type="text/javascript">      
         var menu = document.querySelectorAll('#menu-drop > li');
         var makeHandler = function (i) {  // outer function
             return function () {   // inner function
