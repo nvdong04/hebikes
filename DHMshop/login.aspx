@@ -10,7 +10,7 @@
         </div>
         <div class="form">
             <div class="inputfield">
-                <label>Username/Email</label>
+                <label>Email</label>
                 <asp:TextBox ID="txtUser" CssClass="input" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator
                     ID="RequiredFieldValidator8" runat="server"
