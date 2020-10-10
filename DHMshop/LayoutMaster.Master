@@ -73,7 +73,7 @@
                                     </a>
                                 </li>
                                 <li class="menu-item">
-                                    <a class="menu-item-link" runat="server" href="#">Sản phẩm</a>
+                                    <a class="menu-item-link" runat="server" href="product.aspx">Sản phẩm</a>
                                 </li>
                                 <li class="menu-item">
                                     <a class="menu-item-link" runat="server" href="#">Giới thiệu</a>
@@ -118,20 +118,33 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="menu-item nav-avatar-wrap">
+                            <div id="lbLogin" runat="server" class="menu-item nav-avatar-wrap">
                                  <%--<a href="/Login.aspx" class="nav-avatar__link"> Đăng nhập | Đăng ký </a> --%>
-                                <div class="nav-avatar__user">Mai Hoa</div>
+                                <% if(Session["customer"] == null)
+                                    {%>
+
+                                        <asp:HyperLink ID="hpLogin" NavigateUrl="~/login.aspx" CssClass="nav-avatar__link" runat="server">Đăng nhập | Đăng ký</asp:HyperLink>
+
+                                    <% } 
+                                    else 
+                                    {
+                                    %>
+                                    
+                                    <div class="nav-avatar__user">
+                                    <asp:Label ID="lbCustomer" CssClass="nav-avatar__user" runat="server" Text=""></asp:Label>
+                                </div>
                                 <ul class="nav-sub-menu nav-avatar__list">
                                     <li class="sub-menu-item nav-avatar__list-item">
-                                        <a href="#" class="sub-menu-item-link nav-avatar__item-link">Tài khoản của tôi </a>
+                                        <asp:HyperLink ID="hpProfile" CssClass="sub-menu-item-link nav-avatar__item-link" runat="server">Tài khoản của tôi</asp:HyperLink>
                                     </li>
                                     <li class="sub-menu-item nav-avatar__list-item">
-                                        <a href="#" class="sub-menu-item-link nav-avatar__item-link">Đơn mua </a>
+                                        <asp:HyperLink ID="hpCart" CssClass="sub-menu-item-link nav-avatar__item-link" runat="server">Đơn mua</asp:HyperLink>
                                     </li>
                                     <li class="sub-menu-item nav-avatar__list-item">
-                                        <a href="#" class="sub-menu-item-link nav-avatar__item-link">Đăng xuất </a>
+                                        <input id="btnLogout" type="button" class="sub-menu-item-link nav-avatar__item-link" name="btnLogout" value="Logout" />  
                                     </li>
                                 </ul>
+                                    <% } %>                           
                             </div>
                         </div>
                     </div>
@@ -140,7 +153,7 @@
             </div>
         </header>
         <main class="main-content">
-            <form id="form1" runat="server">
+            <form id="form1" style="margin: 100px 0 80px 0" runat="server">
                 <div>
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>

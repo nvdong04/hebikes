@@ -14,8 +14,13 @@ namespace DHMshop
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            GridView1.DataSource = DataConnect.Instance.ExecuteQuery("Select * from tb_customers");
-            GridView1.DataBind();
+            if(!Page.IsPostBack)
+            {
+                productList.DataSource = DataConnect.Instance.ExecuteQuery("Select * from tb_products");
+                productList.DataBind();
+            }
+
+            
         }
         
     }

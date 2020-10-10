@@ -86,7 +86,7 @@ namespace DHMshop.admin
                 if (result > 0)
                 {
                     Response.Write("Thêm sản phẩm thành công");
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "click", "alert('Thêm sản phẩm thành công'); setTimeout(function(){window.location.href ='../../products.aspx'}, 3000);", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "click", "alert('Thêm sản phẩm thành công'); setTimeout(function(){window.location.href ='/../admin/products.aspx'}, 3000);", true);
                 }
                 else
                 {

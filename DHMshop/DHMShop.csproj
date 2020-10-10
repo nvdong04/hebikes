@@ -73,9 +73,13 @@
     <Content Include="admin\add-product.aspx" />
     <Content Include="admin\assets\css\doashboard.css" />
     <Content Include="admin\customer.aspx" />
+    <Content Include="admin\dashboard.aspx" />
+    <Content Include="admin\edit-customer.aspx" />
     <Content Include="admin\edit-product.aspx" />
+    <Content Include="admin\login.aspx" />
     <Content Include="admin\products.aspx" />
     <Content Include="assets\css\base.css" />
+    <Content Include="assets\css\cardproduct.css" />
     <Content Include="assets\css\grid.css" />
     <Content Include="assets\css\main.css" />
     <Content Include="assets\css\normalize.css" />
@@ -7834,9 +7838,13 @@
     <Content Include="assets\fonts\fontawesome-pro-5.12.0-web\webfonts\fa-light-300.svg" />
     <Content Include="assets\fonts\fontawesome-pro-5.12.0-web\webfonts\fa-regular-400.svg" />
     <Content Include="assets\fonts\fontawesome-pro-5.12.0-web\webfonts\fa-solid-900.svg" />
+    <Content Include="cart.aspx" />
+    <Content Include="detail.aspx" />
     <Content Include="Global.asax" />
     <Content Include="home.aspx" />
     <Content Include="login.aspx" />
+    <Content Include="product.aspx" />
+    <Content Include="profile.aspx" />
     <Content Include="register.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -7855,6 +7863,20 @@
     <Compile Include="admin\customer.aspx.designer.cs">
       <DependentUpon>customer.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\dashboard.aspx.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\dashboard.aspx.designer.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\edit-customer.aspx.cs">
+      <DependentUpon>edit-customer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\edit-customer.aspx.designer.cs">
+      <DependentUpon>edit-customer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\edit-product.aspx.cs">
       <DependentUpon>edit-product.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -7869,6 +7891,13 @@
     <Compile Include="admin\LayoutAdmin.Master.designer.cs">
       <DependentUpon>LayoutAdmin.Master</DependentUpon>
     </Compile>
+    <Compile Include="admin\login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\products.aspx.cs">
       <DependentUpon>products.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -7876,7 +7905,21 @@
     <Compile Include="admin\products.aspx.designer.cs">
       <DependentUpon>products.aspx</DependentUpon>
     </Compile>
+    <Compile Include="cart.aspx.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cart.aspx.designer.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DataConnect.cs" />
+    <Compile Include="detail.aspx.cs">
+      <DependentUpon>detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="detail.aspx.designer.cs">
+      <DependentUpon>detail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -7900,6 +7943,20 @@
     </Compile>
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="product.aspx.cs">
+      <DependentUpon>product.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="product.aspx.designer.cs">
+      <DependentUpon>product.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="profile.aspx.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="profile.aspx.designer.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="register.aspx.cs">

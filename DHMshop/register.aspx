@@ -65,8 +65,8 @@
                   <label>Giới tính</label>
                   <div class="custom_select">
                       <asp:DropDownList ID="ddlSex" CssClass="ddlSex" runat="server">
-                          <asp:ListItem Value="nam" Selected>Nam</asp:ListItem>
-                          <asp:ListItem Value="nữ">Nữ</asp:ListItem>
+                          <asp:ListItem Value="Nam" Selected>Nam</asp:ListItem>
+                          <asp:ListItem Value="Nữ">Nữ</asp:ListItem>
                       </asp:DropDownList>
                   </div>
                </div> 
