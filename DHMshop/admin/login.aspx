@@ -5,6 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Đăng nhập Admin</title>
+    <link href="../assets/css/register.css" rel="stylesheet" />
+    <link href="../assets/css/normalize.css" rel="stylesheet" />
+    <link href="../assets/css/main.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">

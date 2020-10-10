@@ -19,6 +19,8 @@ namespace DHMshop
                 productList.DataSource = DataConnect.Instance.ExecuteQuery("Select * from tb_products");
                 productList.DataBind();
             }
+
+            
         }
         
     }

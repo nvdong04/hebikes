@@ -6,6 +6,8 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.Sql;
+using System.Data;
 
 namespace DHMshop.admin
 {
@@ -27,10 +29,11 @@ namespace DHMshop.admin
                 String pass = ComputeSha256Hash(txtPass.Text.Trim());
 
                 String sql = "SELECT COUNT(*) FROM dbo.tb_users WHERE email = '" + email + "' AND password = '" + pass + "'";
+                
                 int result = (int)DataConnect.Instance.ExecuteScalar(sql);
                 if (result > 0)
                 {
-                    Session["user"] = email;
+                    Session["user"] = email;                  
                     Response.Redirect("dashboard.aspx");
                 }
                 else

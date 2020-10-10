@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -30,6 +31,10 @@ namespace DHMshop
                 int result = (int) DataConnect.Instance.ExecuteScalar(sql);
                 if(result > 0)
                 {
+                    string sq1 = "SELECT * FROM dbo.tb_customers WHERE email = '" + email +"'";
+                    DataTable table = DataConnect.Instance.ExecuteQuery(sq1);
+                    DataRow row = table.Rows[0];
+                    Session["fullcustomer"] = row["full_name"].ToString();
                     Session["customer"] = email;
                     Response.Redirect("home.aspx");
                 } else

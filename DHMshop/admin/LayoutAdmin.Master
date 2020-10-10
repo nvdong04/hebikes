@@ -20,7 +20,7 @@
     <div class="header">
         <nav class="nav">
             <div class="nav-title">
-                <p>Admin</p>
+                <p><%= Session["user"].ToString() %></p>
             </div>
             <div class="nav-user">
                 <a href="#" class="nav-user-wrap">
