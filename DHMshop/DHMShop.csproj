@@ -77,6 +77,7 @@
     <Content Include="admin\edit-customer.aspx" />
     <Content Include="admin\edit-product.aspx" />
     <Content Include="admin\login.aspx" />
+    <Content Include="admin\order.aspx" />
     <Content Include="admin\products.aspx" />
     <Content Include="assets\css\base.css" />
     <Content Include="assets\css\cardproduct.css" />
@@ -7897,6 +7898,13 @@
     </Compile>
     <Compile Include="admin\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\order.aspx.cs">
+      <DependentUpon>order.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\order.aspx.designer.cs">
+      <DependentUpon>order.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\products.aspx.cs">
       <DependentUpon>products.aspx</DependentUpon>
