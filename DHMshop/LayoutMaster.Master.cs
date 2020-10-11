@@ -31,15 +31,18 @@ namespace DHMshop
                 //hpCart.NavigateUrl = "cart.aspx?id=" + id;
             }
 
-            if(Request.Form["btnLogout"] == "Logout")
-            {
-                Response.Redirect("login.aspx");
-            }
         }
 
         public void getCustomer()
         {
             
         }
+
+        protected void btnLogout_ServerClick(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("login.aspx");
+            //btnLogout.ServerClick += new System.EventHandler(this.Button_Click);
+        }   
     }
 }
