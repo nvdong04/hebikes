@@ -1,4 +1,5 @@
-﻿USE [db_DHMShop]
+﻿aaa
+USE [db_DHMShop]
 GO
 /****** Object:  Table [dbo].[tb_cart]    Script Date: 10/11/2020 3:25:01 PM ******/
 SET ANSI_NULLS ON
