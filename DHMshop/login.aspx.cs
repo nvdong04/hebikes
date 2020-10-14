@@ -36,6 +36,7 @@ namespace DHMshop
                     DataRow row = table.Rows[0];
                     Session["fullcustomer"] = row["full_name"].ToString();
                     Session["customer"] = email;
+                    Session["customer_id"] = row["id"].ToString();
                     Response.Redirect("home.aspx");
                 } else
                 {

@@ -86,8 +86,10 @@
                                 <div class="cart-wrap nav-avatar-wrap">
                                     <div class="header__cart">
                                         <div class="header__cart-wrap">
-                                            <i class="header__cart-icon fas fa-shopping-cart"></i>
-                                            <div class="header__cart-notice">4</div>
+                                            <a href="cart.aspx" class="btn btn--primary header__cart-btn">
+                                                <i class="header__cart-icon fas fa-shopping-cart"></i>
+                                            </a>
+                                            <%--<div class="header__cart-notice">0</div>
                                             <!-- No cart add class: header__cart-list--no-cart -->
                                             <div class="header__cart-list ">
                                                 <img src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/f3540f6657bbdc1120e3f8cc90bdba97.png" alt="" class="header__cart-no-cart-img">
@@ -112,7 +114,7 @@
                                                         </div>
                                                     </li>
                                                 </ul>
-                                                <a class="btn btn--primary header__cart-btn">Xem Giỏ Hàng</a>
+                                                <a href="cart.aspx" class="btn btn--primary header__cart-btn">Xem Giỏ Hàng</a>--%>
                                             </div>
                                         </div>
                                     </div>

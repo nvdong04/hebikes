@@ -58,7 +58,7 @@ namespace DHMshop
 
                 adapter.Fill(data);
 
-                connection.Close();
+                //connection.Close();
             }
 
             return data;
@@ -89,7 +89,7 @@ namespace DHMshop
                 }
                 data = command.ExecuteNonQuery();
 
-                connection.Close();
+                //connection.Close();
             }
 
             return data;
@@ -121,7 +121,7 @@ namespace DHMshop
 
                 data = command.ExecuteScalar();
 
-                connection.Close();
+                //connection.Close();
             }
 
             return data;

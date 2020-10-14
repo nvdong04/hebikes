@@ -1,12 +1,12 @@
 ﻿USE [db_DHMShop]
 GO
-/****** Object:  Table [dbo].[tb_cart]    Script Date: 10/11/2020 3:25:01 PM ******/
+/****** Object:  Table [dbo].[tb_cart]    Script Date: 10/11/2020 3:38:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[tb_cart](
-	[id] [int] NOT NULL,
+	[id] [int] IDENTITY(1,1) NOT NULL,
 	[cusomer_id] [int] NOT NULL,
  CONSTRAINT [PK_tb_cart] PRIMARY KEY CLUSTERED 
 (
@@ -15,13 +15,13 @@ CREATE TABLE [dbo].[tb_cart](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[tb_cart_item]    Script Date: 10/11/2020 3:25:01 PM ******/
+/****** Object:  Table [dbo].[tb_cart_item]    Script Date: 10/11/2020 3:38:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[tb_cart_item](
-	[id] [int] NOT NULL,
+	[id] [int] IDENTITY(1,1) NOT NULL,
 	[cart_id] [int] NULL,
 	[product_id] [int] NULL,
 	[quantity] [int] NULL,
@@ -32,7 +32,7 @@ CREATE TABLE [dbo].[tb_cart_item](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[tb_category]    Script Date: 10/11/2020 3:25:01 PM ******/
+/****** Object:  Table [dbo].[tb_category]    Script Date: 10/11/2020 3:38:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -48,7 +48,7 @@ CREATE TABLE [dbo].[tb_category](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[tb_customers]    Script Date: 10/11/2020 3:25:01 PM ******/
+/****** Object:  Table [dbo].[tb_customers]    Script Date: 10/11/2020 3:38:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -73,7 +73,7 @@ CREATE TABLE [dbo].[tb_customers](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[tb_order_detail]    Script Date: 10/11/2020 3:25:01 PM ******/
+/****** Object:  Table [dbo].[tb_order_detail]    Script Date: 10/11/2020 3:38:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -92,7 +92,7 @@ CREATE TABLE [dbo].[tb_order_detail](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[tb_orders]    Script Date: 10/11/2020 3:25:01 PM ******/
+/****** Object:  Table [dbo].[tb_orders]    Script Date: 10/11/2020 3:38:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -111,7 +111,7 @@ CREATE TABLE [dbo].[tb_orders](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[tb_products]    Script Date: 10/11/2020 3:25:01 PM ******/
+/****** Object:  Table [dbo].[tb_products]    Script Date: 10/11/2020 3:38:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -140,7 +140,7 @@ CREATE TABLE [dbo].[tb_products](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[tb_role]    Script Date: 10/11/2020 3:25:01 PM ******/
+/****** Object:  Table [dbo].[tb_role]    Script Date: 10/11/2020 3:38:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -156,7 +156,7 @@ CREATE TABLE [dbo].[tb_role](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[tb_users]    Script Date: 10/11/2020 3:25:01 PM ******/
+/****** Object:  Table [dbo].[tb_users]    Script Date: 10/11/2020 3:38:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -285,7 +285,7 @@ REFERENCES [dbo].[tb_role] ([id])
 GO
 ALTER TABLE [dbo].[tb_users] CHECK CONSTRAINT [FK_tb_users_tb_role]
 GO
-/****** Object:  StoredProcedure [dbo].[sp_addCustomer]    Script Date: 10/11/2020 3:25:01 PM ******/
+/****** Object:  StoredProcedure [dbo].[sp_addCustomer]    Script Date: 10/11/2020 3:38:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -315,7 +315,7 @@ BEGIN
 END
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_addProduct]    Script Date: 10/11/2020 3:25:01 PM ******/
+/****** Object:  StoredProcedure [dbo].[sp_addProduct]    Script Date: 10/11/2020 3:38:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -367,7 +367,7 @@ BEGIN
 	ELSE RETURN N'Không có loại sản phẩm đã chọn';
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_editProduct]    Script Date: 10/11/2020 3:25:01 PM ******/
+/****** Object:  StoredProcedure [dbo].[sp_editProduct]    Script Date: 10/11/2020 3:38:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

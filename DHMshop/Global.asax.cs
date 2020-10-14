@@ -12,13 +12,14 @@ namespace DHMshop
 
         protected void Application_Start(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void Session_Start(object sender, EventArgs e)
         {
             Session["customer"] = null;
             Session["user"] = null;
+            Session["cusomer_id"] = null;
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

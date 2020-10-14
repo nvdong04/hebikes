@@ -59,7 +59,7 @@
             <div class="col l-9 m-9 c-12">
                 <h1 class="title-l">Sản phẩm</h1>
                 <asp:ListView ID="productList" runat="server" OnPagePropertiesChanging="OnPagePropertiesChanging"
-                    DataKeyNames="id" GroupItemCount="3">
+                    DataKeyNames="id" GroupItemCount="3" OnItemCommand="productList_ItemCommand">
                     <EmptyDataTemplate>
                         <table runat="server">
                             <tr>
@@ -112,8 +112,10 @@
                                 </div>
                                 <div style="display:flex">
                                     <a href="detail.aspx?productID=<%# Eval("id")%>" class="btn-add-cart">Xem chi tiết</a>
-                                    <a href="detail.aspx?productID=<%# Eval("id")%>" class="btn-add-cart">add to cart</a>
-                                </div>
+                                    <%--<a href="detail.aspx?productID=<%# Eval("id")%>" class="btn-add-cart">add to cart</a>--%>
+                                    <asp:Button ID="btnAddtoCart" runat="server" CssClass="btn-add-cart" Text="Add to cart" />
+                                    <%--<button id="addToCart" class="btn-add-cart" onclick="addtocart">ADD TO CART</button>--%>
+                                </div>s
                             </section>
                         </div>
                     </ItemTemplate>
@@ -150,4 +152,7 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        
+    </script>
 </asp:Content>

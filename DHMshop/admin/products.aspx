@@ -17,8 +17,8 @@
                         <div class="col l-12">
                             <asp:GridView 
                                 ID="gvProduct" runat="server" DataKeyNames="id"
-                                AllowPaging="True" AllowSorting="True"   
-                                AutoGenerateColumns="False" CssClass="table" OnRowDeleting="gvProduct_RowDeleting">
+                                AllowPaging="False" AllowSorting="True"   
+                                AutoGenerateColumns="False" CssClass="table" OnRowDeleting="gvProduct_RowDeleting" PageSize="5" AllowCustomPaging="True">
                                 <Columns>
                                     <asp:TemplateField HeaderText="STT">
                                         <ItemTemplate>
@@ -49,6 +49,7 @@
                                 </Columns>
                             </asp:GridView>
                         </div>
+                        
                     </div>
                 </div>
               
