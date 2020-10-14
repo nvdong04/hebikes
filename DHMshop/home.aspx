@@ -4,6 +4,41 @@
     <link href="assets/css/cardproduct.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <!-- Slideshow container -->
+    <div class="slideshow-container">
+
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade">
+            <div class="numbertext">1 / 3</div>
+            <img src="public/image/product/slide_1.jpg" style="width: 100%">
+            <div class="text">Caption Text</div>
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">2 / 3</div>
+            <img src="public/image/product//slide_2.jpg" style="width: 100%">
+            <div class="text">Caption Two</div>
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">3 / 3</div>
+            <img src="public/image/product//slide_3.jpg" style="width: 100%">
+            <div class="text">Caption Three</div>
+        </div>
+
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+
+    <!-- The dots/circles -->
+    <div style="text-align: center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+    <!--/slider-->
     <div class="grid wide">
         <div class="row">
             <div class="col l-12 m-12 c-12">
@@ -28,7 +63,7 @@
                     <ItemTemplate>
                         <div class="card">
                             <figure>
-                                    <img src="<%# Eval("img")%>" alt="<%# Eval("name")%>">
+                                <img src="<%# Eval("img")%>" alt="<%# Eval("name")%>">
                             </figure>
                             <section class="details">
                                 <div class="min-details">
@@ -59,7 +94,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div style="display:flex">
+                                <div style="display: flex">
                                     <a href="detail.aspx?productID=<%# Eval("id")%>" class="btn-add-cart">Xem chi tiết</a>
                                     <a href="detail.aspx?productID=<%# Eval("id")%>" class="btn-add-cart">add to cart</a>
                                 </div>
@@ -87,4 +122,27 @@
             </div>
         </div>
     </div>
+</asp:Content>
+
+
+
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolderScript" runat="server">
+
+    <script>
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 5000); // Change image every 2 seconds
+        }
+    </script>
+
 </asp:Content>

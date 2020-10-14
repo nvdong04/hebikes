@@ -7841,8 +7841,10 @@
     <Content Include="assets\fonts\fontawesome-pro-5.12.0-web\webfonts\fa-solid-900.svg" />
     <Content Include="cart.aspx" />
     <Content Include="detail.aspx" />
+    <Content Include="GioiThieu.aspx" />
     <Content Include="Global.asax" />
     <Content Include="home.aspx" />
+    <Content Include="LienHe.aspx" />
     <Content Include="login.aspx" />
     <Content Include="product.aspx" />
     <Content Include="profile.aspx" />
@@ -7928,6 +7930,13 @@
     <Compile Include="detail.aspx.designer.cs">
       <DependentUpon>detail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GioiThieu.aspx.cs">
+      <DependentUpon>GioiThieu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GioiThieu.aspx.designer.cs">
+      <DependentUpon>GioiThieu.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -7944,6 +7953,13 @@
     </Compile>
     <Compile Include="LayoutMaster.Master.designer.cs">
       <DependentUpon>LayoutMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="LienHe.aspx.cs">
+      <DependentUpon>LienHe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LienHe.aspx.designer.cs">
+      <DependentUpon>LienHe.aspx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
