@@ -35,26 +35,13 @@
                             <div class="product-description">
                                 <p><%# Eval("description")%></p>
                             </div>
+
+                            <button type="button" class="btn-add-cart btn-cart">Thêm Vào Giỏ</button>
                         </div>
                     </div>
                 </ItemTemplate>
 
             </asp:ListView>
-            <div class="col l-8 m-8 c-12">
-                <div class="options">
-                    <div class="options-size">
-                        <span>Size</span>
-                        <asp:DropDownList ID="ddlSize" runat="server">
-                        </asp:DropDownList>
-                    </div>
-                    <div class="options-colors">
-                        <span>Color</span>
-                        <asp:DropDownList ID="ddlColor" runat="server">
-                        </asp:DropDownList>
-                    </div>
-                </div>
-                <button type="button" class="btn-add-cart btn-cart">Thêm Vào Giỏ</button>
-            </div>
         </div>
     </div>
 </asp:Content>

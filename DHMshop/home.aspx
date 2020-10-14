@@ -9,20 +9,20 @@
 
         <!-- Full-width images with number and caption text -->
         <div class="mySlides fade">
-            <div class="numbertext">1 / 3</div>
-            <img src="public/image/product/slide_1.jpg" style="width: 100%">
+            
+            <img src="public/image/product/slide_1.jpg" style="width: 100%; height: 400px">
             <div class="text">Caption Text</div>
         </div>
 
         <div class="mySlides fade">
-            <div class="numbertext">2 / 3</div>
-            <img src="public/image/product//slide_2.jpg" style="width: 100%">
+            
+            <img src="public/image/product//slide_2.jpg" style="width: 100% ; height: 400px">
             <div class="text">Caption Two</div>
         </div>
 
         <div class="mySlides fade">
-            <div class="numbertext">3 / 3</div>
-            <img src="public/image/product//slide_3.jpg" style="width: 100%">
+            
+            <img src="public/image/product//slide_3.jpg" style="width: 100%; height: 400px">
             <div class="text">Caption Three</div>
         </div>
 
