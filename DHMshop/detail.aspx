@@ -2,40 +2,49 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
-<<<<<<< HEAD
         .product-img {
-            margin:36px 0 0 0;
+            margin: 36px 0 0 0;
         }
+
         .product-wrap {
             padding: 12px 16px;
             font-size: 14px;
         }
+
         .product-name {
             font-size: 24px;
         }
+
         .product-price {
             padding-bottom: 16px;
         }
+
         .product-description {
             padding: 12px 0;
         }
+
         .options {
             padding: 12px 0;
         }
+
         .options-size {
-            padding-bottom:8px
+            padding-bottom: 8px
         }
+
         .options-colors {
             padding-bottom: 16px;
         }
+
         .btn-add-to-cart {
             padding: 8px 12px;
         }
+
         .product-content {
-            margin:36px 0;
-            font-size:14px;
+            margin: 36px 0;
+            font-size: 14px;
             color: var(--text-color);
         }
+
         .product-content-c {
             padding-right: 16px;
             line-height: 1.6rem;
@@ -83,12 +92,15 @@
             border-left: none;
             border-radius: 0 4px 4px 0;
         }
+
         .input-quantity {
             margin: 16px 0;
         }
-        .input-quantity input {
-            padding: 6px;
-=======
+
+            .input-quantity input {
+                padding: 6px;
+            }
+
         .btn-add-cart {
             margin: 0 4px;
             background-color: #192a56;
@@ -102,21 +114,22 @@
             text-transform: capitalize;
             width: 20%;
             transition: box-shadow .3s ease-in-out, transform .3s ease-in-out;
->>>>>>> master
         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="grid wide">
         <div class="row">
-<<<<<<< HEAD
             <div class="col l-4 m-4 c-12">
                 <div class="product-img">
+                    <asp:Image ID="Image1" Width="350px" ImageUrl="../public/image/product/MG_5049.jpg" runat="server" />
                     <asp:Image ID="imgProduct" Width="350px" runat="server" />
                 </div>
             </div>
             <div class="col l-8 m-8 c-12">
                 <div class="product-wrap">
+                    <h1 class="product-name">Tên sản phẩm</h1>
+                    <div class="product-price">230000vnđ</div>
                     <h1 class="product-name">
                         <asp:Label ID="lbProductName" runat="server" Text=""></asp:Label>
                     </h1>
@@ -124,6 +137,7 @@
                         <asp:Label ID="lbProductPrice" runat="server" Text=""></asp:Label>
                     </div>
                     <div class="product-description">
+                        <p>sàncdjhschsdhfcbjbndsajbfhadsf</p>
                         <span>Mô tả: </span>
                         <span>
                             <asp:Label ID="lbDescription" runat="server" Text=""></asp:Label>
@@ -142,33 +156,26 @@
                                 <asp:ListItem Value="43" Text="43"></asp:ListItem>
                                 <asp:ListItem Value="44" Text="44"></asp:ListItem>
                             </asp:DropDownList>
-=======
-            <asp:ListView ID="productDetail" runat="server">
-                <ItemTemplate>
-                    <div class="col l-4 m-4 c-12">
-                        <div class="product-img">
-                            <img src="<%# Eval("img")%>" alt="<%# Eval("name")%>" width="350px">
->>>>>>> master
+                        </div>
+                        <div class="options-colors">
+                            <span>Color</span>
+                            <asp:DropDownList ID="ddlColor" runat="server">
+                                <asp:ListItem Value="Trắng" Text="Trắng"></asp:ListItem>
+                                <asp:ListItem Value="Đen" Text="Đen"></asp:ListItem>
+                                <asp:ListItem Value="Vàng" Text="Vàng"></asp:ListItem>
+                                <asp:ListItem Value="Xanh" Text="Xanh"></asp:ListItem>
+                                <asp:ListItem Value="Xanh đen" Text="Xanh đen"></asp:ListItem>
+                                <asp:ListItem Value="Nâu" Text="Nâu"></asp:ListItem>
+                                <asp:ListItem Value="Cam" Text="Cam"></asp:ListItem>
+                            </asp:DropDownList>
                         </div>
                     </div>
-                    <div class="col l-8 m-8 c-12">
-                        <div class="product-wrap">
-                            <h1 class="product-name"><%# Eval("name")%></h1>
-                            <h3 class="product-price"><%#:String.Format("{0:000,000}", Eval("price"))%> vnđ</h3>
-                            <div class="product-description">
-                                <p><%# Eval("description")%></p>
-                            </div>
-
-                            <button type="button" class="btn-add-cart btn-cart">Thêm Vào Giỏ</button>
-                        </div>
-                    </div>
-<<<<<<< HEAD
                     <div class="input-quantity">
                         <span>Số lượng: </span>
                         <asp:TextBox ID="txtQuantity" Width="50px" CssClass="" Text="1" TextMode="Number" min="1" max="10" runat="server"></asp:TextBox>
-                        <asp:RegularExpressionValidator 
-                            ID="RegularExpressionValidator1" 
-                            runat="server"  ControlToValidate="txtQuantity" ValidationExpression="/^[1-9][0-9]?$|^10$/"
+                        <asp:RegularExpressionValidator
+                            ID="RegularExpressionValidator1"
+                            runat="server" ControlToValidate="txtQuantity" ValidationExpression="/^[1-9][0-9]?$|^10$/"
                             ErrorMessage=""></asp:RegularExpressionValidator>
                     </div>
                     <div>
@@ -188,14 +195,8 @@
                     </div>
                 </div>
             </div>
-=======
-                </ItemTemplate>
-
-            </asp:ListView>
->>>>>>> master
         </div>
     </div>
     <script type="text/javascript">
-
-    </script>   
+</script>
 </asp:Content>
