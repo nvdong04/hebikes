@@ -21,20 +21,6 @@ namespace DHMshop
                     DataConnect.Instance.ExecuteQuery(sql);
                     productDetail.DataSource = DataConnect.Instance.ExecuteQuery(sql);
                     productDetail.DataBind();
-
-
-                    string sqlSize = "Select size, color from tb_products_detail where product_id=" + id;
-                    var dt = DataConnect.Instance.ExecuteQuery(sqlSize);
-
-                    ddlSize.DataTextField = dt.Columns["size"].ToString();
-                    ddlSize.DataValueField = dt.Columns["size"].ToString();
-                    ddlSize.DataSource = dt;
-                    ddlSize.DataBind();
-
-                    ddlColor.DataTextField = dt.Columns["color"].ToString();
-                    ddlColor.DataValueField = dt.Columns["color"].ToString();
-                    ddlColor.DataSource = dt;
-                    ddlColor.DataBind();
                 }
             }
         }

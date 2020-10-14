@@ -117,7 +117,7 @@
             </div>
         </header>
         <main class="main-content">
-            <form id="form1" style="margin: 100px 0 80px 0" runat="server">
+            <form id="form1" style="margin: 50px 0 80px 0" runat="server">
                 <div>
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>
