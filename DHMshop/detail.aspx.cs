@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,9 +12,30 @@ namespace DHMshop
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!Page.IsPostBack)
+            if (!IsPostBack)
             {
-                
+                if (Request.QueryString["productID"] != null)
+                {
+                    string id = Request.QueryString["productID"];
+                    string sql = "Select * from tb_products where id=" + id;
+                    DataConnect.Instance.ExecuteQuery(sql);
+                    productDetail.DataSource = DataConnect.Instance.ExecuteQuery(sql);
+                    productDetail.DataBind();
+
+
+                    string sqlSize = "Select size, color from tb_products_detail where product_id=" + id;
+                    var dt = DataConnect.Instance.ExecuteQuery(sqlSize);
+
+                    ddlSize.DataTextField = dt.Columns["size"].ToString();
+                    ddlSize.DataValueField = dt.Columns["size"].ToString();
+                    ddlSize.DataSource = dt;
+                    ddlSize.DataBind();
+
+                    ddlColor.DataTextField = dt.Columns["color"].ToString();
+                    ddlColor.DataValueField = dt.Columns["color"].ToString();
+                    ddlColor.DataSource = dt;
+                    ddlColor.DataBind();
+                }
             }
         }
     }
