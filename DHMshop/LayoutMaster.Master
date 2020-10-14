@@ -27,42 +27,6 @@
                             <input type="checkbox" hidden id="menu-check" name="" />
                             <a class="navbar-logo" runat="server" href="home.aspx">DHMShop</a>
                             <label for="menu-check" class="navbar-overlay"></label>
-                            <!--begin NAV mobile,table -->
-                            <div class="navbar-mobile-collapse">
-                                <label class="navbar-mobile-close" for="menu-check">
-                                    <i class="navbar-mobile-close-icon far fa-times-circle"></i>
-                                </label>
-                                <ul class="navbar-moblie-menu">
-                                    <li class="nav-moblie-menu-item">
-                                        <a class="nav-moblie-menu-item-link" href="#">Trang Chủ</a>
-                                    </li>
-                                    <li class="nav-moblie-menu-item">
-                                        <a class="nav-moblie-menu-item-link" href="#">Sản phẩm</a>
-                                        <ul class="nav-moblie-sub-menu">
-                                            <li class="sub-nav-moblie-menu-item">
-                                                <a class="sub-nav-moblie-menu-item-link" onclick="preventDefault()">Giày nam</a>
-                                            </li>
-                                            <li class="sub-nav-moblie-menu-item">
-                                                <a class="sub-nav-moblie-menu-item-link" href="#">Giày nữ</a>
-                                            </li>
-                                            <li class="sub-nav-moblie-menu-item">
-                                                <a class="sub-nav-moblie-menu-item-link" href="#">Giày thể thao</a>
-                                            </li>
-                                            <li class="sub-nav-moblie-menu-item">
-                                                <a class="sub-nav-moblie-menu-item-link" href="#">Giày Sneaker</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-
-                                    <li class="nav-moblie-menu-item">
-                                        <a class="nav-moblie-menu-item-link" runat="server" onclick="preventDefault()">Giới thiệu</a>
-                                    </li>
-                                    <li class="nav-moblie-menu-item">
-                                        <a class="nav-moblie-menu-item-link" runat="server" onclick="preventDefault()">Liên hệ</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!--end NAV mobile,table -->
                         </div>
                         <!--begin NAV PC -->
                         <div id="nav" class="navbar-collapse collapse hide-on-mobile-tablet" runat="server">
@@ -76,10 +40,10 @@
                                     <a class="menu-item-link" runat="server" href="product.aspx">Sản phẩm</a>
                                 </li>
                                 <li class="menu-item">
-                                    <a class="menu-item-link" runat="server" href="#">Giới thiệu</a>
+                                    <a class="menu-item-link" runat="server" href="GioiThieu.aspx">Giới thiệu</a>
                                 </li>
                                 <li class="menu-item">
-                                    <a class="menu-item-link" runat="server" href="#">Liên hệ</a>
+                                    <a class="menu-item-link" runat="server" href="LienHe.aspx">Liên hệ</a>
                                 </li>
                             </ul>
                             <div class="nav nav-avatar">
@@ -155,7 +119,7 @@
             </div>
         </header>
         <main class="main-content">
-            <form id="form1" style="margin: 100px 0 80px 0" runat="server">
+            <form id="form1" style="margin: 50px 0 80px 0" runat="server">
                 <div>
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>
@@ -314,4 +278,6 @@
         </footer>
     </div>
 </body>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolderScript" runat="server">
+    </asp:ContentPlaceHolder>
 </html>

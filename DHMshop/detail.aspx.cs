@@ -12,9 +12,16 @@ namespace DHMshop
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!Page.IsPostBack)
+            if (!IsPostBack)
             {
-                
+                if (Request.QueryString["productID"] != null)
+                {
+                    string id = Request.QueryString["productID"];
+                    string sql = "Select * from tb_products where id=" + id;
+                    DataConnect.Instance.ExecuteQuery(sql);
+                    productDetail.DataSource = DataConnect.Instance.ExecuteQuery(sql);
+                    productDetail.DataBind();
+                }
             }
             if (Request.QueryString["productID"] != null)
             {
