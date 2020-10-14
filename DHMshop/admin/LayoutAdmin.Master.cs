@@ -16,5 +16,10 @@ namespace DHMshop.Admin
                 Response.Redirect("login.aspx");
             }
         }
+
+        protected void btnLogout_ServerClick(object sender, EventArgs e)
+        {
+            Session.Abandon();
+        }
     }
 }

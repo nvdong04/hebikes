@@ -11,7 +11,17 @@ namespace DHMshop.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(!Page.IsPostBack)
+            {
+                bind_data();
+            }
+        }
 
+        private void bind_data()
+        {
+            string sql = "Select * from tb_orders";
+            gvOrder.DataSource = DataConnect.Instance.ExecuteQuery(sql);
+            gvOrder.DataBind();
         }
     }
 }

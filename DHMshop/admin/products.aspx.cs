@@ -13,9 +13,7 @@ namespace DHMshop.admin
         {
             if (!Page.IsPostBack)
             {
-                String sql = "SELECT P.*, C.name AS name_category FROM dbo.tb_products AS P,dbo.tb_category AS C WHERE P.id = C.id";
-                gvProduct.DataSource = DataConnect.Instance.ExecuteQuery(sql).DefaultView;
-                gvProduct.DataBind();
+                Bind_Data();
             }
         }
 
@@ -27,6 +25,14 @@ namespace DHMshop.admin
             //result = DataConnect.Instance.ExecuteNonQuery(sql);
             string script = "<script>confirm('" + id + "')</script>";
             Response.Write(script);
+        }
+
+
+        private void Bind_Data()
+        {
+            String sql = "SELECT p.*, c.name AS name_category FROM dbo.tb_products AS p LEFT JOIN dbo.tb_category AS c ON c.id = p.category_id";
+            gvProduct.DataSource = DataConnect.Instance.ExecuteQuery(sql).DefaultView;
+            gvProduct.DataBind();
         }
     }
 }

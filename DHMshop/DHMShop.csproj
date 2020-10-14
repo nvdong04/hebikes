@@ -7840,6 +7840,7 @@
     <Content Include="assets\fonts\fontawesome-pro-5.12.0-web\webfonts\fa-regular-400.svg" />
     <Content Include="assets\fonts\fontawesome-pro-5.12.0-web\webfonts\fa-solid-900.svg" />
     <Content Include="cart.aspx" />
+    <Content Include="checkout.aspx" />
     <Content Include="detail.aspx" />
     <Content Include="GioiThieu.aspx" />
     <Content Include="Global.asax" />
@@ -7921,6 +7922,13 @@
     </Compile>
     <Compile Include="cart.aspx.designer.cs">
       <DependentUpon>cart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="checkout.aspx.cs">
+      <DependentUpon>checkout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="checkout.aspx.designer.cs">
+      <DependentUpon>checkout.aspx</DependentUpon>
     </Compile>
     <Compile Include="DataConnect.cs" />
     <Compile Include="detail.aspx.cs">

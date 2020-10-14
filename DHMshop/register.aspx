@@ -40,6 +40,12 @@
                        ForeColor="red" CssClass="alert"
                        ErrorMessage="*">
                    </asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator 
+                        ID="RegularExpressionValidator1"  
+                        ControlToValidate="txtEmail"  ForeColor="Red"
+                        ValidationExpression="/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/"
+                        runat="server" ErrorMessage="Email không đúng định dạng">
+                    </asp:RegularExpressionValidator>
                </div> 
                <div class="inputfield">
                   <label>Mật khẩu</label>
@@ -50,6 +56,11 @@
                        ForeColor="red" CssClass="alert"
                        ErrorMessage="*">
                    </asp:RequiredFieldValidator>
+                   <asp:RegularExpressionValidator 
+                        ID="RegularExpressionValidator2" ForeColor="Red"
+                        ControlToValidate="txtPassword" ValidationExpression="/^[a-zA-Z1-7]$/"
+                        runat="server" ErrorMessage="Mật khẩu chỉ bao gồm chữ cái và số">
+                    </asp:RegularExpressionValidator>
                </div>  
               <div class="inputfield">
                   <label>Xác nhận mật khẩu</label>
@@ -60,6 +71,12 @@
                        ForeColor="red" CssClass="alert"
                        ErrorMessage="*">
                    </asp:RequiredFieldValidator>
+                  <asp:CompareValidator 
+                      ID="CompareValidator1" runat="server"  
+                      ControlToCompare="txtPassword" 
+                      ControlToValidate="txtConfirmPassword" ForeColor="Red"
+                      ErrorMessage="Mật khẩu không giống mật khẩu đã nhập trước đó">
+                  </asp:CompareValidator>
               </div> 
                 <div class="inputfield">
                   <label>Giới tính</label>
@@ -79,6 +96,11 @@
                        ForeColor="red" CssClass="alert"
                        ErrorMessage="*">
                    </asp:RequiredFieldValidator>
+                  <asp:RegularExpressionValidator 
+                        ID="RegularExpressionValidator3" ForeColor="Red"
+                        ControlToValidate="txtPhone" ValidationExpression="/(03|07|08|09|01[2|6|8|9])+([0-9]{8})\b/"
+                        runat="server" ErrorMessage="Số điện thoại không dúng định dạng">
+                    </asp:RegularExpressionValidator>
                </div> 
               <div class="inputfield">
                   <label>Địa chỉ</label>
@@ -92,7 +114,7 @@
               </div> 
               <div class="inputfield terms">
                   <label class="check">
-                    <input type="checkbox"/>
+                    <input checked type="checkbox"/>
                     <span class="checkmark"></span>
                   </label>
                   <p>Đồng ý với các điều khoản và điều kiện</p>

@@ -6,7 +6,7 @@
 <head runat="server">
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-    <title><%: Page.Title %> - Travel News</title>
+    <title><%: Page.Title %> - DHMShop</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,7 +36,8 @@
                         <a href="#" class="nav-user__item-link">User profile</a>
                     </li>
                     <li class="nav-user__item">
-                        <a href="#" class="nav-user__item-link">Logout</a>
+                        <button id="btnLogout" onserverclick="btnLogout_ServerClick" class="nav-user__item-link" name="btnLogout" runat="server">Logout</button>
+                        <%--<a href="#" class="nav-user__item-link">Logout</a>--%>
                     </li>
                 </ul>
             </div>
