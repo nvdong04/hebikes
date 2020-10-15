@@ -18,19 +18,19 @@
         <!-- Full-width images with number and caption text -->
         <div class="mySlides fade">
             
-            <img src="public/image/product/slide_1.jpg" style="width: 100%; height: 400px">
+            <img src="public/image/product/giay1.jpg" style="width: 100%; height: 500px">
             <div class="text">Caption Text</div>
         </div>
 
         <div class="mySlides fade">
             
-            <img src="public/image/product//slide_2.jpg" style="width: 100% ; height: 400px">
+            <img src="public/image/product//giay2.jpg" style="width: 100% ; height: 500px">
             <div class="text">Caption Two</div>
         </div>
 
         <div class="mySlides fade">
             
-            <img src="public/image/product//slide_3.jpg" style="width: 100%; height: 400px">
+            <img src="public/image/product//giay3.jpg" style="width: 100%; height: 500px">
             <div class="text">Caption Three</div>
         </div>
 

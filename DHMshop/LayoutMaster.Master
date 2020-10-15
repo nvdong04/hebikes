@@ -25,7 +25,7 @@
                                 <i class="navbar-toggle-icon fas fa-bars"></i>
                             </label>
                             <input type="checkbox" hidden id="menu-check" name="" />
-                            <a class="navbar-logo" runat="server" href="home.aspx">DHMShop</a>
+                            <a class="navbar-logo" runat="server" href="home.aspx"><b>DHMShop</b></a>
                             <label for="menu-check" class="navbar-overlay"></label>
                         </div>
                         <!--begin NAV PC -->
@@ -37,13 +37,13 @@
                                     </a>
                                 </li>
                                 <li class="menu-item">
-                                    <a class="menu-item-link" runat="server" href="product.aspx">Sản phẩm</a>
+                                    <a class="menu-item-link" runat="server" href="product.aspx"><b>Sản phẩm</b></a>
                                 </li>
                                 <li class="menu-item">
-                                    <a class="menu-item-link" runat="server" href="GioiThieu.aspx">Giới thiệu</a>
+                                    <a class="menu-item-link" runat="server" href="GioiThieu.aspx"><b>Giới thiệu</b></a>
                                 </li>
                                 <li class="menu-item">
-                                    <a class="menu-item-link" runat="server" href="LienHe.aspx">Liên hệ</a>
+                                    <a class="menu-item-link" runat="server" href="LienHe.aspx"><b>Liên hệ</b></a>
                                 </li>
                             </ul>
                             <div class="nav nav-avatar">
@@ -89,7 +89,7 @@
                                 <% if(Session["customer"] == null)
                                     {%>
 
-                                        <asp:HyperLink ID="hpLogin" NavigateUrl="~/login.aspx" CssClass="nav-avatar__link" runat="server">Đăng nhập | Đăng ký</asp:HyperLink>
+                                        <asp:HyperLink ID="hpLogin" NavigateUrl="~/login.aspx" CssClass="nav-avatar__link" runat="server"><b>Đăng nhập | Đăng ký</b></asp:HyperLink>
 
                                     <% } 
                                     else 
@@ -119,7 +119,7 @@
             </div>
         </header>
         <main class="main-content">
-            <form id="form1" style="margin: 50px 0 80px 0" runat="server">
+            <form id="form1" style="margin: 100px 0 80px 0" runat="server">
                 <div>
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>
