@@ -454,17 +454,18 @@ AS
 BEGIN
 	IF EXISTS (SELECT * FROM dbo.tb_customers WHERE id = @customer_id)
 		BEGIN
-			IF EXISTS (SELECT * FROM dbo.tb_cart_item WHERE product_id = @product_id)
+			DECLARE @cart_id INT
+			SELECT @cart_id = tb_cart.id FROM dbo.tb_cart,dbo.tb_customers, dbo.tb_cart_item
+			WHERE cusomer_id = @customer_id AND cusomer_id = tb_customers.id 
+			
+			IF EXISTS (SELECT * FROM dbo.tb_cart_item WHERE product_id = @product_id and cart_id = @cart_id)
 				BEGIN
 					UPDATE dbo.tb_cart_item
 					SET quantity = quantity + @quantity
-					WHERE product_id = @product_id
+					WHERE product_id = @product_id and cart_id = @cart_id
 				END
 			ELSE
 				BEGIN
-					DECLARE @cart_id INT
-					SELECT @cart_id = tb_cart.id FROM dbo.tb_cart,dbo.tb_customers, dbo.tb_cart_item
-					WHERE cusomer_id = @customer_id AND cusomer_id = tb_customers.id  
 					INSERT INTO dbo.tb_cart_item( cart_id, product_id, quantity )
 					VALUES  (@cart_id , @product_id , @quantity)
 				END
@@ -636,3 +637,17 @@ BEGIN
 		END
 END
 GO
+
+ALTER TRIGGER auto_create_cart
+ON dbo.tb_customers
+AFTER INSERT,UPDATE
+AS
+BEGIN
+	IF EXISTS(SELECT * FROM Inserted)
+		BEGIN
+			DECLARE @customer_id INT
+			SELECT @customer_id = Inserted.id FROM Inserted
+			INSERT INTO dbo.tb_cart( cusomer_id )
+			VALUES  (@customer_id)
+		END
+END
