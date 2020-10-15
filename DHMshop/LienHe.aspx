@@ -6,16 +6,17 @@
     <div class="grid wide">
         <div class="row">
             <div class="col l-12 m-12 c-12">
-                <h3>Your contact page.</h3>
-                <address>
-                    One Microsoft Way<br />
-                    Redmond, WA 98052-6399<br />
-                    <abbr title="Phone">P:</abbr>
+                <h1 style="font-size:24px">Liên hệ với <b>DHMShop</b></h1>
+                <br />
+                <address style="font-size:14px">
+                    One Microsoft Way<br /><br />
+                    Redmond, WA 98052-6399<br /><br />
+                    <abbr title="Phone">Phone:</abbr>
                     425.555.0100
                 </address>
-
-                <address>
-                    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+                <br />
+                <address style="font-size:14px">
+                    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br /><br />
                     <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
                 </address>
             </div>

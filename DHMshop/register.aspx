@@ -40,12 +40,7 @@
                        ForeColor="red" CssClass="alert"
                        ErrorMessage="*">
                    </asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator 
-                        ID="RegularExpressionValidator1"  
-                        ControlToValidate="txtEmail"  ForeColor="Red"
-                        ValidationExpression="/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/"
-                        runat="server" ErrorMessage="Email không đúng định dạng">
-                    </asp:RegularExpressionValidator>
+                    
                </div> 
                <div class="inputfield">
                   <label>Mật khẩu</label>
@@ -56,11 +51,7 @@
                        ForeColor="red" CssClass="alert"
                        ErrorMessage="*">
                    </asp:RequiredFieldValidator>
-                   <asp:RegularExpressionValidator 
-                        ID="RegularExpressionValidator2" ForeColor="Red"
-                        ControlToValidate="txtPassword" ValidationExpression="/^[a-zA-Z1-7]$/"
-                        runat="server" ErrorMessage="Mật khẩu chỉ bao gồm chữ cái và số">
-                    </asp:RegularExpressionValidator>
+                   
                </div>  
               <div class="inputfield">
                   <label>Xác nhận mật khẩu</label>
@@ -96,11 +87,7 @@
                        ForeColor="red" CssClass="alert"
                        ErrorMessage="*">
                    </asp:RequiredFieldValidator>
-                  <asp:RegularExpressionValidator 
-                        ID="RegularExpressionValidator3" ForeColor="Red"
-                        ControlToValidate="txtPhone" ValidationExpression="/(03|07|08|09|01[2|6|8|9])+([0-9]{8})\b/"
-                        runat="server" ErrorMessage="Số điện thoại không dúng định dạng">
-                    </asp:RegularExpressionValidator>
+                  
                </div> 
               <div class="inputfield">
                   <label>Địa chỉ</label>
