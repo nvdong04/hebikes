@@ -8,6 +8,10 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Roboto',
     monospace;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
