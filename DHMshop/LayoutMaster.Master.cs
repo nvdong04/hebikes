@@ -20,9 +20,9 @@ namespace DHMshop
                 DataRow row = table.Rows[0];
                 string id = row["id"].ToString();
                 string name = row["full_name"].ToString();
-                hpProfile.NavigateUrl = "profile.aspx?id=" + id;
-                hpCart.NavigateUrl = "cart.aspx?id=" + id;
-                lbCustomer.Text = name;
+                //hpProfile.NavigateUrl = "profile.aspx?id=" + id;
+                //hpCart.NavigateUrl = "cart.aspx?id=" + id;
+                //lbCustomer.Text = name;
             }
             else
             {

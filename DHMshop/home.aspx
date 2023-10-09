@@ -2,55 +2,18 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="assets/css/cardproduct.css" rel="stylesheet" />
-    <style type="text/css">
-        .options-list {
-            font-size: 14px;
-            color: var(--text-color);
-            min-width:32px;
-            padding: 2px;
-        }
-    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!-- Slideshow container -->
-    <div class="slideshow-container">
-
-        <!-- Full-width images with number and caption text -->
-        <div class="mySlides fade">
-            
-            <img src="public/image/product/giay1.jpg" style="width: 100%; height: 500px">
-            <div class="text">Caption Text</div>
-        </div>
-
-        <div class="mySlides fade">
-            
-            <img src="public/image/product//giay2.jpg" style="width: 100% ; height: 500px">
-            <div class="text">Caption Two</div>
-        </div>
-
-        <div class="mySlides fade">
-            
-            <img src="public/image/product//giay3.jpg" style="width: 100%; height: 500px">
-            <div class="text">Caption Three</div>
-        </div>
-
-        <!-- Next and previous buttons -->
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-    <br>
-
-    <!-- The dots/circles -->
-    <div style="text-align: center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-    </div>
+   
     <!--/slider-->
     <div class="grid wide">
         <div class="row">
             <div class="col l-12 m-12 c-12">
                 <h1 class="title-l">Sản phẩm mới nhất</h1>
+                <h1 class="text-3xl font-bold underline">
+    Hello world!
+  </h1>
                 <asp:ListView ID="productList" runat="server"
                     DataKeyNames="id" GroupItemCount="4" OnItemCommand="productList_ItemCommand" >
                     <EmptyDataTemplate>

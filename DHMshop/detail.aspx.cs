@@ -26,14 +26,7 @@ namespace DHMshop
 
         public void bind_data(int id)
         {
-            string sql = "EXEC dbo.sp_getProductWithID @product_id";
-            DataTable table = DataConnect.Instance.ExecuteQuerySP(sql, new object[] { id });
-            DataRow row = table.Rows[0];
-            lbProductName.Text = row["product_name"].ToString();
-            lbDescription.Text = row["description"].ToString();
-            lbDetail.Text = row["detail"].ToString();
-            lbProductPrice.Text = row["price"].ToString();
-            imgProduct.ImageUrl = row["img"].ToString();
+            
         } 
     }
 }

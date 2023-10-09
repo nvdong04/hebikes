@@ -87,28 +87,7 @@
                                 </div>
 
                                 <div class="options">
-                                    <div class="options-size">
-                                        <h1>sizes</h1>
-                                        <ul>
-                                            <li>39</li>
-                                            <li>40</li>
-                                            <li>41</li>
-                                            <li>42</li>
-                                            <li>43</li>
-                                            <li>44</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="options-colors">
-                                        <h1>colors</h1>
-                                        <ul>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                        </ul>
-                                    </div>
+                                    
                                 </div>
                                 <div style="display:flex">
                                     <a href="detail.aspx?productID=<%# Eval("id")%>" class="btn-add-cart">Xem chi tiết</a>

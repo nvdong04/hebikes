@@ -7,117 +7,43 @@
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-    <link href="assets/css/grid.css" rel="stylesheet" />
-    <link href="assets/css/main.css" rel="stylesheet" />
     <link href="assets/css/normalize.css" rel="stylesheet" />
     <link href="assets/css/base.css" rel="stylesheet" />
     <link href="assets/fonts/fontawesome-pro-5.12.0-web/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap&subset=vietnamese" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <div class="app">
-        <header class="header">
-            <div class="navbar">
-                <div class="grid wide full-wrap">
-                    <div class="navbar-wrap ">
-                        <div class="navbar-header">
-                            <label for="menu-check" class="navbar-toggle">
-                                <i class="navbar-toggle-icon fas fa-bars"></i>
-                            </label>
-                            <input type="checkbox" hidden id="menu-check" name="" />
-                            <a class="navbar-logo" runat="server" href="home.aspx"><b>DHMShop</b></a>
-                            <label for="menu-check" class="navbar-overlay"></label>
-                        </div>
-                        <!--begin NAV PC -->
-                        <div id="nav" class="navbar-collapse collapse hide-on-mobile-tablet" runat="server">
-                            <ul class="nav navbar-menu">
-                                <li class="menu-item">
-                                    <a class="menu-item-link" runat="server" href="home.aspx">
-                                        <i class="fas fa-home"></i>
-                                    </a>
-                                </li>
-                                <li class="menu-item">
-                                    <a class="menu-item-link" runat="server" href="product.aspx"><b>Sản phẩm</b></a>
-                                </li>
-                                <li class="menu-item">
-                                    <a class="menu-item-link" runat="server" href="GioiThieu.aspx"><b>Giới thiệu</b></a>
-                                </li>
-                                <li class="menu-item">
-                                    <a class="menu-item-link" runat="server" href="LienHe.aspx"><b>Liên hệ</b></a>
-                                </li>
-                            </ul>
-                            <div class="nav nav-avatar">
-                                <div class="cart-wrap nav-avatar-wrap">
-                                    <div class="header__cart">
-                                        <div class="header__cart-wrap">
-                                            <a href="cart.aspx" class="btn btn--primary header__cart-btn">
-                                                <i class="header__cart-icon fas fa-shopping-cart"></i>
-                                            </a>
-                                            <%--<div class="header__cart-notice">0</div>
-                                            <!-- No cart add class: header__cart-list--no-cart -->
-                                            <div class="header__cart-list ">
-                                                <img src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/f3540f6657bbdc1120e3f8cc90bdba97.png" alt="" class="header__cart-no-cart-img">
-                                                <span class="header__cart-no-cart-msg">Chưa có sản phẩm!</span>
-                                                <h3 class="header__cart-heading">Sản phẩm đã thêm</h3>
-                                                <ul class="header__cart-list-item">
-                                                    <li class="header__cart-item">
-                                                        <img src="https://cf.shopee.vn/file/5fac5dfb5e5ec3301c00a739760165ef_tn" alt="" class="header__cart-img">
-                                                        <div class="header__cart-item-info">
-                                                            <div class="header__cart-item-head">
-                                                                <h3 class="header__cart-item-name">Tai Nghe HTC E240 Pro Siêu Bass Dành Cho AE PUBG Mobile</h3>
-                                                                <div class="header__cart-item-price-wrap">
-                                                                    <span class="header__cart-item-price">2.000.000đ</span>
-                                                                    <span class="header__cart-item-multiply">x</span>
-                                                                    <span class="header__cart-item-qnt">2</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="header__cart-item-body">
-                                                                <span class="header__cart-item-desciption">Phân loại hàng: Trắng</span>
-                                                                <span class="header__cart-item-remove">Xoá</span>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                                <a href="cart.aspx" class="btn btn--primary header__cart-btn">Xem Giỏ Hàng</a>--%>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="lbLogin" runat="server" class="menu-item nav-avatar-wrap">
-                                 <%--<a href="/Login.aspx" class="nav-avatar__link"> Đăng nhập | Đăng ký </a> --%>
-                                <% if(Session["customer"] == null)
-                                    {%>
-
-                                        <asp:HyperLink ID="hpLogin" NavigateUrl="~/login.aspx" CssClass="nav-avatar__link" runat="server"><b>Đăng nhập | Đăng ký</b></asp:HyperLink>
-
-                                    <% } 
-                                    else 
-                                    {
-                                    %>
-                                    
-                                    <div class="nav-avatar__user">
-                                    <asp:Label ID="lbCustomer" CssClass="nav-avatar__user" runat="server" Text=""></asp:Label>
-                                </div>
-                                <ul class="nav-sub-menu nav-avatar__list">
-                                    <li class="sub-menu-item nav-avatar__list-item">
-                                        <asp:HyperLink ID="hpProfile" CssClass="sub-menu-item-link nav-avatar__item-link" runat="server">Tài khoản của tôi</asp:HyperLink>
-                                    </li>
-                                    <li class="sub-menu-item nav-avatar__list-item">
-                                        <asp:HyperLink ID="hpCart" CssClass="sub-menu-item-link nav-avatar__item-link" runat="server">Đơn mua</asp:HyperLink>
-                                    </li>
-                                    <li class="sub-menu-item nav-avatar__list-item">
-                                        <button id="btnLogout" runat="server" onserverclick="btnLogout_ServerClick" type="button" class="sub-menu-item-link nav-avatar__item-link" name="btnLogout" value="Logout">Đăng xuất</button>  
-                                    </li>
-                                </ul>
-                                    <% } %>                           
-                            </div>
-                        </div>
+        <header class="max-w-screen-xl ml-auto mr-auto">
+            <div class="flex justify-between items-center content-center">
+                <div>
+                    <img width="120" src="data:image/png;base64,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" alt="XE ĐẸP"></div>
+                <div class="flex items-center content-center">
+                    <div class="mr-12">
+                        <p>Tư vấn hỗ trợ</p>
+                        <p class="text-lg text-orange-600 font-bold">0988999777</p>
                     </div>
-                    <!--End NAV PC -->
+                    <div class="flex items-center content-center mr-8"><i class="fa-solid fa-user text-4xl text-neutral-500"></i>
+                        <div class="ml-2 text-center">
+                            <p>Xin chào</p>
+                            <a href="." class="text-orange-600 font-bold">Đăng Nhập</a></div>
+                    </div>
+                    <div class=""><i class="fa-regular fa-cart-shopping text-4xl text-neutral-500"></i></div>
                 </div>
             </div>
         </header>
+        <nav class="w-screen bg-orange-600 h-10">
+            <div class="max-w-screen-xl ml-auto mr-auto">
+                <div class="flex items-center content-center justify-center h-10 space-x-14 text-white font-bold">
+                    <div class="hover:text-yellow-400"><a href="/">Trang chủ</a></div>
+                    <div class="hover:text-yellow-400"><a href="/">Sản phẩm</a></div>
+                    <div class="hover:text-yellow-400"><a href="/">Giới thiệu</a></div>
+                    <div class="hover:text-yellow-400"><a href="/">Liên hệ</a></div>
+                    <div class="hover:text-yellow-400"><a href="/">Câu hỏi thường gặp</a></div>
+                </div>
+            </div>
+        </nav>
         <main class="main-content">
             <form id="form1" style="margin: 60px 0 80px 0" runat="server">
                 <div>
@@ -126,158 +52,56 @@
                 </div>
             </form>
         </main>
-    <footer class="footer">
-            <div class="grid">
-                <div class="grid__row">
-                    <div class="grid__column-1-4">
-                        <h3 class="footer__heading">Chăm sóc khách hàng</h3>
-                        <ul class="footer-list">
-                            <li class="footer-item">
-                                <a href="#" class="footer-item__link">
-                                    Trung tâm trợ giúp
-                                </a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="#" class="footer-item__link">
-                                    DMH Blog
-                                </a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="#" class="footer-item__link">
-                                    DMH Mail
-                                </a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="#" class="footer-item__link">
-                                    Hướng dẫn mua hàng
-                                </a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="#" class="footer-item__link">
-                                    Hướng dẫn bán hàng
-                                </a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="#" class="footer-item__link">
-                                    Chăm sóc khách hàng
-                                </a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="#" class="footer-item__link">
-                                    Trả hàng & Hoàn tiền
-                                </a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="#" class="footer-item__link">
-                                    Chính sách bảo hành
-                                </a>
-                            </li>
+        <footer class="w-screen bg-indigo-700">
+            <div class="max-w-screen-xl ml-auto mr-auto pt-11 pb-8">
+                <div class="grid grid-cols-4 gap-4">
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <h4 class="uppercase text-white font-bold m-0 p-0"><span>Về chúng tôi <i class="fa fa-plus hidden" aria-hidden="true"></i></span></h4>
+                        <ul class="pt-6">
+                            <li class="text-slate-300 hover:text-yellow-700"><a href="/" title="Trang chủ">Trang chủ</a></li>
+                            <li class="text-slate-300 hover:text-yellow-700"><a href="/gioi-thieu" title="Giới thiệu">Giới thiệu</a></li>
+                            <li class="text-slate-300 hover:text-yellow-700"><a href="/" title="Sản phẩm">Sản phẩm</a></li>
+                            <li class="text-slate-300 hover:text-yellow-700"><a href="/mua-tra-gop" title="Mua trả góp">Mua trả góp</a></li>
+                            <li class="text-slate-300 hover:text-yellow-700"><a href="/tin-moi-nhat" title="Tin mới nhất">Tin mới nhất</a></li>
+                            <li class="text-slate-300 hover:text-yellow-700"><a href="/cau-hoi-thuong-gap" title="Câu hỏi thường gặp">Câu hỏi thường gặp</a></li>
+                            <li class="text-slate-300 hover:text-yellow-700"><a href="/lien-he" title="Liên hệ">Liên hệ</a></li>
+                            <li class="text-slate-300 hover:text-yellow-700"><a href="/thong-tin-dang-ky-bao-hanh" title="Thông tin đăng ký bảo hành">Thông tin đăng ký bảo hành</a></li>
+                            <li class="text-slate-300 hover:text-yellow-700"><a href="/trang-thong-tin" title="Trang thông tin">Trang thông tin</a></li>
                         </ul>
                     </div>
-                    <div class="grid__column-1-4">
-                        <h3 class="footer__heading">VỀ DMH</h3>
-                        <ul class="footer-list">
-                            <li class="footer-item">
-                                <a href="#" class="footer-item__link">
-                                    Giới thiệu về DMH Việt Nam
-                                </a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="#" class="footer-item__link">
-                                    Tuyển dụng
-                                </a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="#" class="footer-item__link">
-                                    Điều khoản Shopee
-                                </a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="#" class="footer-item__link">
-                                    Chính sách bảo mật
-                                </a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="#" class="footer-item__link">
-                                    Chính hãng
-                                </a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="#" class="footer-item__link">
-                                    Kênh người bán
-                                </a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="#" class="footer-item__link">
-                                    Flash sales
-                                </a>
-                            </li>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <h4 class="uppercase text-white font-bold m-0 p-0"><span>Hướng dẫn <i class="fa fa-plus hidden" aria-hidden="true"></i></span></h4>
+                        <ul class="pt-6">
+                            <li class="text-slate-300 hover:text-yellow-700"><a href="/huong-dan" title="Hướng dẫn mua hàng">Hướng dẫn mua hàng</a></li>
+                            <li class="text-slate-300 hover:text-yellow-700"><a href="/huong-dan" title="Giao nhận và thanh toán">Giao nhận và thanh toán</a></li>
+                            <li class="text-slate-300 hover:text-yellow-700"><a href="/huong-dan" title="Đổi trả và bảo hành">Đổi trả và bảo hành</a></li>
+                            <li class="text-slate-300 hover:text-yellow-700"><a href="/account/register" title="Đăng ký thành viên">Đăng ký thành viên</a></li>
                         </ul>
                     </div>
-
-                    <div class="grid__column-1-4">
-                        <h3 class="footer__heading">THANH TOÁN</h3>
-                        <ul class="footer-list">
-                            <li class="footer-item">
-                                <a href="#" class="footer-item__link">
-                                    Trung tâm trợ giúp
-                                </a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="#" class="footer-item__link">
-                                    Shopee Blog
-                                </a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="#" class="footer-item__link">
-                                    Shoppe Mail
-                                </a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="#" class="footer-item__link">
-                                    Hướng dẫn mua hàng
-                                </a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="#" class="footer-item__link">
-                                    Hướng dẫn bán hàng
-                                </a>
-                            </li>
-                           
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <h4 class="uppercase text-white font-bold m-0 p-0"><span>Điều khoán <i class="fa fa-plus hidden" aria-hidden="true"></i></span></h4>
+                        <ul class="pt-6">
+                            <li class="text-slate-300 hover:text-yellow-700"><a href="/dieu-khoan" title="Điều khoản sử dụng">Điều khoản sử dụng</a></li>
+                            <li class="text-slate-300 hover:text-yellow-700"><a href="/" title="Điều khoản giao dịch">Điều khoản giao dịch</a></li>
+                            <li class="text-slate-300 hover:text-yellow-700"><a href="/" title="Dịch vụ tiện ích">Dịch vụ tiện ích</a></li>
+                            <li class="text-slate-300 hover:text-yellow-700"><a href="/" title="Quyền sở hữu trí tuệ">Quyền sở hữu trí tuệ</a></li>
                         </ul>
                     </div>
-
-                    <div class="grid__column-1-4">
-                        <h3 class="footer__heading">THEO DÕI CHÚNG TÔI TRÊN</h3>
-                        <ul class="footer-list">
-                            <li class="footer-item">
-                                <a href="#" class="footer-item__link">
-                                    <i class="footer-item__icon fab fa-facebook" aria-hidden="true"></i>
-                                    Facebook
-                                </a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="#" class="footer-item__link">
-                                    <i class="footer-item__icon fab fa-instagram" aria-hidden="true"></i>
-                                    Instagram
-                                </a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="#" class="footer-item__link">
-                                    <i class="footer-item__icon fab fa-linkedin" aria-hidden="true"></i>
-                                    LinkedIn
-                                </a>
-                            </li>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <h4 class="uppercase text-white font-bold m-0 p-0"><span>Chính sách <i class="fa fa-plus hidden" aria-hidden="true"></i></span></h4>
+                        <ul class="pt-6">
+                            <li class="text-slate-300 hover:text-yellow-700"><a href="/chinh-sach" title="Chính sách thanh toán">Chính sách thanh toán</a></li>
+                            <li class="text-slate-300 hover:text-yellow-700"><a href="/chinh-sach" title="Chính sách vận chuyển">Chính sách vận chuyển</a></li>
+                            <li class="text-slate-300 hover:text-yellow-700"><a href="/chinh-sach" title="Chính sách đổi trả">Chính sách đổi trả</a></li>
+                            <li class="text-slate-300 hover:text-yellow-700"><a href="/chinh-sach" title="Chính sách bảo hành">Chính sách bảo hành</a></li>
+                            <li class="text-slate-300 hover:text-yellow-700"><a href="/chinh-sach" title="Chính sách bảo mật thông tin">Chính sách bảo mật thông tin</a></li>
                         </ul>
                     </div>
-                </div>
-                <div class="grid__row">
-                    <div class="footer__text">©2020 - Bản quyền thuộc về Công ty TNHH DHM</div>
                 </div>
             </div>
         </footer>
     </div>
 </body>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolderScript" runat="server">
-    </asp:ContentPlaceHolder>
+<asp:ContentPlaceHolder ID="ContentPlaceHolderScript" runat="server">
+</asp:ContentPlaceHolder>
 </html>
