@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/LayoutMaster.Master" AutoEventWireup="true" CodeBehind="detail.aspx.cs" Inherits="DHMshop.detail" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/LayoutMaster.Master" AutoEventWireup="true" CodeBehind="ProductDetail.aspx.cs" Inherits="DHMshop.detail" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     

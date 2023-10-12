@@ -1,11 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/LayoutMaster.Master" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="DHMshop.login" %>
+﻿<%@ Page Title="Đăng Nhập" Language="C#" MasterPageFile="~/LayoutMaster.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="DHMshop.login" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="assets/css/register.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="w-full max-w-sm mx-auto px-4 py-12">
-        <h1 class="text-3xl text-slate-800 font-bold mb-6">Xin chào bạnd đến với XE ĐẸP! ✨
+        <h1 class="text-3xl text-slate-800 font-bold mb-6">Xin chào bạn đến với XE ĐẸP! ✨
         </h1>
         <div class="form">
             <div class="space-y-4">

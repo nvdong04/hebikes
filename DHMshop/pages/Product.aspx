@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Sản phẩm" Language="C#" MasterPageFile="~/LayoutMaster.Master" AutoEventWireup="true" CodeBehind="product.aspx.cs" Inherits="DHMshop.product" %>
+﻿<%@ Page Title="Sản phẩm" Language="C#" MasterPageFile="~/LayoutMaster.Master" AutoEventWireup="true" CodeBehind="Product.aspx.cs" Inherits="DHMshop.product" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="assets/css/cardproduct.css" rel="stylesheet" />
     <style>

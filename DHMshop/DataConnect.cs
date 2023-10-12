@@ -26,6 +26,8 @@ namespace DHMshop
             private set => instance = value; 
         }
 
+        //Generate a function sum a array
+
         private DataConnect() {
             
         }

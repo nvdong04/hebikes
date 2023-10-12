@@ -1,3 +1,5 @@
 /.vs
 /DHMshop/obj
 /DHMshop/bin
+/node_modules
+/DHMshop/node_modules

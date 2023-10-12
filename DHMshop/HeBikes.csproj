@@ -76,58 +76,74 @@
     <Content Include="assets\css\untility.css" />
     <Content Include="assets\css\register.css" />
     <Content Include="assets\images\logo.png" />
-    <Content Include="cart.aspx" />
-    <Content Include="checkout.aspx" />
-    <Content Include="detail.aspx" />
-    <Content Include="GioiThieu.aspx" />
+    <Content Include="pages\Cart.aspx">
+      <BrowseToURL>~/cart</BrowseToURL>
+    </Content>
+    <Content Include="pages\Checkout.aspx">
+      <BrowseToURL>~/checkout</BrowseToURL>
+    </Content>
+    <Content Include="pages\ProductDetail.aspx">
+      <BrowseToURL>~/product-detail.aspx</BrowseToURL>
+    </Content>
+    <Content Include="pages\GioiThieu.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="home.aspx" />
-    <Content Include="Contact.aspx" />
-    <Content Include="login.aspx" />
-    <Content Include="product.aspx" />
-    <Content Include="profile.aspx" />
-    <Content Include="register.aspx" />
+    <Content Include="pages\Home.aspx">
+      <BrowseToURL>~/home.aspx</BrowseToURL>
+    </Content>
+    <Content Include="pages\Contact.aspx">
+      <BrowseToURL>~/contact</BrowseToURL>
+    </Content>
+    <Content Include="pages\Login.aspx">
+      <BrowseToURL>~/login.aspx</BrowseToURL>
+    </Content>
+    <Content Include="pages\Product.aspx">
+      <BrowseToURL>~/product.aspx</BrowseToURL>
+    </Content>
+    <Content Include="pages\profile.aspx" />
+    <Content Include="pages\Register.aspx">
+      <BrowseToURL>~/register.aspx</BrowseToURL>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cart.aspx.cs">
-      <DependentUpon>cart.aspx</DependentUpon>
+    <Compile Include="pages\Cart.aspx.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="cart.aspx.designer.cs">
-      <DependentUpon>cart.aspx</DependentUpon>
+    <Compile Include="pages\Cart.aspx.designer.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
     </Compile>
-    <Compile Include="checkout.aspx.cs">
-      <DependentUpon>checkout.aspx</DependentUpon>
+    <Compile Include="pages\Checkout.aspx.cs">
+      <DependentUpon>Checkout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="checkout.aspx.designer.cs">
-      <DependentUpon>checkout.aspx</DependentUpon>
+    <Compile Include="pages\Checkout.aspx.designer.cs">
+      <DependentUpon>Checkout.aspx</DependentUpon>
     </Compile>
     <Compile Include="DataConnect.cs" />
-    <Compile Include="detail.aspx.cs">
-      <DependentUpon>detail.aspx</DependentUpon>
+    <Compile Include="pages\ProductDetail.aspx.cs">
+      <DependentUpon>ProductDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="detail.aspx.designer.cs">
-      <DependentUpon>detail.aspx</DependentUpon>
+    <Compile Include="pages\ProductDetail.aspx.designer.cs">
+      <DependentUpon>ProductDetail.aspx</DependentUpon>
     </Compile>
-    <Compile Include="GioiThieu.aspx.cs">
+    <Compile Include="pages\GioiThieu.aspx.cs">
       <DependentUpon>GioiThieu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="GioiThieu.aspx.designer.cs">
+    <Compile Include="pages\GioiThieu.aspx.designer.cs">
       <DependentUpon>GioiThieu.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="home.aspx.cs">
-      <DependentUpon>home.aspx</DependentUpon>
+    <Compile Include="pages\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="home.aspx.designer.cs">
-      <DependentUpon>home.aspx</DependentUpon>
+    <Compile Include="pages\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="LayoutMaster.Master.cs">
       <DependentUpon>LayoutMaster.Master</DependentUpon>
@@ -136,41 +152,41 @@
     <Compile Include="LayoutMaster.Master.designer.cs">
       <DependentUpon>LayoutMaster.Master</DependentUpon>
     </Compile>
-    <Compile Include="Contact.aspx.cs">
+    <Compile Include="pages\Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
+    <Compile Include="pages\Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="login.aspx.cs">
-      <DependentUpon>login.aspx</DependentUpon>
+    <Compile Include="pages\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="login.aspx.designer.cs">
-      <DependentUpon>login.aspx</DependentUpon>
+    <Compile Include="pages\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="product.aspx.cs">
-      <DependentUpon>product.aspx</DependentUpon>
+    <Compile Include="pages\Product.aspx.cs">
+      <DependentUpon>Product.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="product.aspx.designer.cs">
-      <DependentUpon>product.aspx</DependentUpon>
+    <Compile Include="pages\Product.aspx.designer.cs">
+      <DependentUpon>Product.aspx</DependentUpon>
     </Compile>
-    <Compile Include="profile.aspx.cs">
+    <Compile Include="pages\profile.aspx.cs">
       <DependentUpon>profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="profile.aspx.designer.cs">
+    <Compile Include="pages\profile.aspx.designer.cs">
       <DependentUpon>profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="register.aspx.cs">
-      <DependentUpon>register.aspx</DependentUpon>
+    <Compile Include="pages\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="register.aspx.designer.cs">
-      <DependentUpon>register.aspx</DependentUpon>
+    <Compile Include="pages\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -188,9 +204,7 @@
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
     <Folder Include="App_GlobalResources\" />
-    <Folder Include="assets\fonts\" />
     <Folder Include="public\image\" />
-    <Folder Include="user\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="node_modules\tailwindcss\dist\*.css" />
