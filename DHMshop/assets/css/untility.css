@@ -1,0 +1,349 @@
+﻿@layer components {
+
+    input {
+        border-width: 1px;
+        @apply bg-white;
+        font-size: 0.875rem;
+        line-height: 1.5715;
+        @apply text-slate-800;
+        border-radius: 0.25rem;
+    }
+
+    .btn {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.25rem;
+        border-width: 1px;
+        border-color: transparent;
+        font-size: 0.875rem;
+        line-height: 1.5715;
+        font-weight: 500;
+        line-height: 1.25rem;
+        @apply shadow-sm;
+        transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+        transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+        transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+        transition-duration: 150ms;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn-primary {
+        @apply text-white;
+        @apply bg-indigo-500;
+    }
+
+    .input,
+    .select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: #fff;
+        border-color: #6b7280;
+        border-width: 1px;
+        border-radius: 0px;
+        padding-top: 0.5rem;
+        padding-right: 0.75rem;
+        padding-bottom: 0.5rem;
+        padding-left: 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        --tw-shadow: 0 0 #0000;
+    }
+
+    .checkbox {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        padding: 0;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        display: inline-block;
+        vertical-align: middle;
+        background-origin: border-box;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        flex-shrink: 0;
+        height: 1rem;
+        width: 1rem;
+        color: #2563eb;
+        background-color: #fff;
+        border-color: #6b7280;
+        border-width: 1px;
+        --tw-shadow: 0 0 #0000;
+    }
+}
+
+@layer utilities {
+    .text-3xl {
+        font-size: 1.88rem;
+        line-height: 1.33;
+        letter-spacing: -0.01em;
+    }
+
+    .input,
+    .select,
+    .checkbox {
+        @apply border;
+        @apply border-white;
+    }
+
+    .input,
+    .select,
+    .checkbox {
+        border-radius: 0.25rem;
+    }
+
+    .input,
+    .select {
+        @apply border-slate-200;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        font-size: 0.875rem;
+        line-height: 1.5715;
+        line-height: 1.25rem;
+        @apply text-slate-800;
+        @apply shadow-sm;
+    }
+
+        .input:focus,
+        .select:focus {
+            @apply outline-none;
+            @apply ring-0;
+            @apply ring-offset-slate-800;
+        }
+
+        .input:focus,
+        .select:focus {
+            @apply shadow-none;
+            --tw-ring-offset-width: 0px;
+        }
+
+        .input:focus {
+            @apply border-slate-300;
+        }
+
+        .input:hover,
+        .select:hover {
+            @apply border-slate-300;
+        }
+
+    .checkbox, .radio {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        padding: 0;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        display: inline-block;
+        vertical-align: middle;
+        background-origin: border-box;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        flex-shrink: 0;
+        height: 1rem;
+        width: 1rem;
+        color: #2563eb;
+        background-color: #fff;
+        border-color: #6b7280;
+        border-width: 1px;
+        --tw-shadow: 0 0 #0000;
+    }
+
+    .checkbox, .radio {
+        border-width: 1px;
+        --tw-border-opacity: 1;
+        border-color: rgb(203 213 225/var(--tw-border-opacity));
+        --tw-text-opacity: 1;
+        color: rgb(99 102 241/var(--tw-text-opacity));
+    }
+
+        .checkbox:checked, .radio:checked {
+            border-color: transparent;
+            background-color: currentColor;
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .checkbox:checked {
+            background-image: url(data:image/svg+xml,%3csvg\ viewBox=\'0\ 0\ 16\ 16\'\ fill=\'white\'\ xmlns=\'http://www.w3.org/2000/svg\'%3e%3cpath\ d=\'M12.207\ 4.793a1\ 1\ 0\ 010\ 1.414l-5\ 5a1\ 1\ 0\ 01-1.414\ 0l-2-2a1\ 1\ 0\ 011.414-1.414L6.5\ 9.086l4.293-4.293a1\ 1\ 0\ 011.414\ 0z\'/%3e%3c/svg%3e);
+        }
+
+        .checkbox:checked, .radio:checked {
+            @apply bg-indigo-500;
+        }
+
+            .checkbox:checked:hover, .checkbox:checked:focus, .radio:checked:hover, .radio:checked:focus {
+                border-color: transparent;
+                background-color: currentColor;
+            }
+}
+
+body {
+    margin: 0;
+    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif; */
+    font-family: Inter, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/* Typography */
+.h1 {
+    @apply text-4xl font-extrabold tracking-tighter;
+}
+
+.h2 {
+    @apply text-3xl font-extrabold tracking-tighter;
+}
+
+.h3 {
+    @apply text-3xl font-extrabold;
+}
+
+.h4 {
+    @apply text-2xl font-extrabold tracking-tight;
+}
+
+@screen md {
+    .h1 {
+        @apply text-5xl;
+    }
+
+    .h2 {
+        @apply text-4xl;
+    }
+}
+
+/* Buttons */
+.btn,
+.btn-lg,
+.btn-sm,
+.btn-xs {
+    @apply font-medium text-sm inline-flex items-center justify-center border border-transparent rounded leading-5 shadow-sm transition duration-150 ease-in-out;
+}
+
+.btn {
+    @apply px-3 py-2;
+}
+
+.btn-lg {
+    @apply px-4 py-3;
+}
+
+.btn-sm {
+    @apply px-2 py-1;
+}
+
+.btn-xs {
+    @apply px-2 py-0.5;
+}
+
+/* Forms */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+}
+
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select,
+.form-checkbox,
+.form-radio {
+    @apply bg-white dark:bg-slate-900/30 border focus:ring-0 focus:ring-offset-0 dark:disabled:bg-slate-700/30 dark:disabled:border-slate-700 dark:disabled:hover:border-slate-700;
+}
+
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select,
+.form-checkbox {
+    @apply rounded;
+}
+
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select {
+    @apply text-sm text-slate-800 dark:text-slate-100 leading-5 py-2 px-3 border-slate-200 hover:border-slate-300 focus:border-slate-300 dark:border-slate-700 dark:hover:border-slate-600 dark:focus:border-slate-600 shadow-sm;
+}
+
+.form-input,
+.form-textarea {
+    @apply placeholder-slate-400 dark:placeholder-slate-500;
+}
+
+.form-select {
+    @apply pr-10;
+}
+
+.form-checkbox,
+.form-radio {
+    @apply text-indigo-500 checked:bg-indigo-500 dark:checked:border-transparent border border-slate-300 focus:border-indigo-300 dark:border-slate-700 dark:focus:border-indigo-500/50;
+}
+
+/* Switch element */
+.form-switch {
+    @apply relative select-none;
+    width: 44px;
+}
+
+    .form-switch label {
+        @apply block overflow-hidden cursor-pointer h-6 rounded-full;
+    }
+
+        .form-switch label > span:first-child {
+            @apply absolute block rounded-full;
+            width: 20px;
+            height: 20px;
+            top: 2px;
+            left: 2px;
+            right: 50%;
+            transition: all .15s ease-out;
+        }
+
+    .form-switch input[type="checkbox"]:checked + label {
+        @apply bg-indigo-500;
+    }
+
+        .form-switch input[type="checkbox"]:checked + label > span:first-child {
+            left: 22px;
+        }
+
+    .form-switch input[type="checkbox"]:disabled + label {
+        @apply cursor-not-allowed bg-slate-100 dark:bg-slate-700/20 border border-slate-200 dark:border-slate-700;
+    }
+
+        .form-switch input[type="checkbox"]:disabled + label > span:first-child {
+            @apply bg-slate-400 dark:bg-slate-600;
+        }
+
+/* Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
