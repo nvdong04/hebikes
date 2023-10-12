@@ -17,7 +17,7 @@
                    <asp:RequiredFieldValidator 
                        ID="RequiredFieldValidator1" runat="server"  
                        ControlToValidate="txtFirstName" 
-                       ForeColor="red" CssClass="alert"
+                       ForeColor="red" CssClass="text-sm"
                        ErrorMessage="*">
                    </asp:RequiredFieldValidator>
                </div>  
@@ -27,7 +27,7 @@
                     <asp:RequiredFieldValidator 
                        ID="RequiredFieldValidator2" runat="server"  
                        ControlToValidate="txtLastName" 
-                       ForeColor="red" CssClass="alert"
+                       ForeColor="red" CssClass="text-sm"
                        ErrorMessage="*">
                    </asp:RequiredFieldValidator>
                </div>  
