@@ -21,6 +21,7 @@
                         ID="RequiredFieldValidator1" runat="server"
                         ControlToValidate="txtEmail"
                         ForeColor="red"
+                        Display="Dynamic"
                         CssClass="text-xs"
                         ErrorMessage="Trường thông tin bắt buộc">
                 </asp:RequiredFieldValidator>
@@ -37,6 +38,7 @@
                         ID="RequiredFieldValidator2" runat="server"
                         ControlToValidate="txtPass"
                         ForeColor="red"
+                        Display="Dynamic"
                         CssClass="text-xs"
                         ErrorMessage="Trường thông tin bắt buộc">
                 </asp:RequiredFieldValidator>

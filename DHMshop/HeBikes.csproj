@@ -83,15 +83,15 @@
       <BrowseToURL>~/checkout</BrowseToURL>
     </Content>
     <Content Include="pages\ProductDetail.aspx">
-      <BrowseToURL>~/product-detail.aspx</BrowseToURL>
+      <BrowseToURL>~/productdetail.aspx</BrowseToURL>
     </Content>
-    <Content Include="pages\GioiThieu.aspx" />
+    <Content Include="pages\About.aspx" />
     <Content Include="Global.asax" />
     <Content Include="pages\Home.aspx">
       <BrowseToURL>~/home.aspx</BrowseToURL>
     </Content>
     <Content Include="pages\Contact.aspx">
-      <BrowseToURL>~/contact</BrowseToURL>
+      <BrowseToURL>~/contact.aspx</BrowseToURL>
     </Content>
     <Content Include="pages\Login.aspx">
       <BrowseToURL>~/login.aspx</BrowseToURL>
@@ -128,12 +128,12 @@
     <Compile Include="pages\ProductDetail.aspx.designer.cs">
       <DependentUpon>ProductDetail.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\GioiThieu.aspx.cs">
-      <DependentUpon>GioiThieu.aspx</DependentUpon>
+    <Compile Include="pages\About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\GioiThieu.aspx.designer.cs">
-      <DependentUpon>GioiThieu.aspx</DependentUpon>
+    <Compile Include="pages\About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
