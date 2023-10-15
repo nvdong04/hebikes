@@ -16,7 +16,7 @@ namespace DHMshop
             {
                 String sql = "SELECT * FROM dbo.tb_customers WHERE email = '" + Session["customer"].ToString() + "'";
                 DataTable table = new DataTable();
-                table = DataConnect.Instance.ExecuteQuery(sql);
+                table = DatabaseConnection.Instance.ExecuteQuery(sql);
                 DataRow row = table.Rows[0];
                 string id = row["id"].ToString();
                 string name = row["full_name"].ToString();

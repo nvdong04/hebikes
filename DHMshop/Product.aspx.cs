@@ -13,7 +13,7 @@ namespace DHMshop
         {
             if(!Page.IsPostBack)
             {
-                category.DataSource = DataConnect.Instance.ExecuteQuery("Select * from tb_category");
+                category.DataSource = DatabaseConnection.Instance.ExecuteQuery("Select * from tb_category");
                 category.DataBind();
                 Bind_Data();
             }
@@ -27,14 +27,14 @@ namespace DHMshop
             {
                 int id = int.Parse(Request.QueryString["category"]);
                 string sql = "Select * from tb_products where category_id=" + id;
-                productList.DataSource = DataConnect.Instance.ExecuteQuery(sql);
+                productList.DataSource = DatabaseConnection.Instance.ExecuteQuery(sql);
                 productList.DataBind();
             }
         }
 
         public void Bind_Data()
         {
-            productList.DataSource = DataConnect.Instance.ExecuteQuery("Select * from tb_products");
+            productList.DataSource = DatabaseConnection.Instance.ExecuteQuery("Select * from tb_products");
             productList.DataBind();
 
             
@@ -58,8 +58,8 @@ namespace DHMshop
                 //int size = int.Parse(ddlSize.SelectedValue);
                 //string color = ddlColor.SelectedValue;
                 string sql = "EXEC dbo.sp_AddToCart @customer_id , @product_id , @quantity";
-                int result = DataConnect.Instance.ExecuteNonQuerySP(sql, new object[] { customer_id, product_id, quantity });
-                if (result > 0)
+                bool result = DatabaseConnection.Instance.ExecuteNonQuerySP(sql, new object[] { customer_id, product_id, quantity });
+                if (result)
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "click", "alert('Thêm sản phẩm vào giỏ hàng thành công');", true);
                 }

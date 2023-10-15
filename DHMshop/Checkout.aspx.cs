@@ -43,7 +43,7 @@ namespace DHMshop
         {
             String sql = "SELECT * FROM dbo.tb_customers WHERE email = '" + Session["customer"].ToString() + "'";
             DataTable table = new DataTable();
-            table = DataConnect.Instance.ExecuteQuery(sql);
+            table = DatabaseConnection.Instance.ExecuteQuery(sql);
             DataRow row = table.Rows[0];
             lbFullname.Text = row["full_name"].ToString();
             lbAdress.Text = row["address"].ToString();
@@ -86,7 +86,7 @@ namespace DHMshop
         public DataTable gioHang(int id)
         {
             String sql = "EXEC dbo.sp_getCartWithID @customer_id";
-            DataTable result = DataConnect.Instance.ExecuteQuerySP(sql, new object[] { id });
+            DataTable result = DatabaseConnection.Instance.ExecuteQuerySP(sql, new object[] { id });
             return result;
         }
 
@@ -94,7 +94,7 @@ namespace DHMshop
         {
             int order_id;
             string sql = "EXECUTE dbo.sp_CreateOrder @customer_id , @order_date , @order_note , @order_total_price , @order_status";
-            order_id = (int)DataConnect.Instance.ExecuteScalarSP(sql, new object[] { cusomer_id, order_date, order_note, order_total_price, order_status });
+            order_id = (int)DatabaseConnection.Instance.ExecuteScalarSP(sql, new object[] { cusomer_id, order_date, order_note, order_total_price, order_status });
             return order_id;
 
         }
@@ -102,7 +102,7 @@ namespace DHMshop
         public void createOrderDetail(int order_id, int product_id, int quantity)
         {
             String sql = "EXEC dbo.sp_create_order_detail @order_id , @product_id , @quantity";
-            int result = DataConnect.Instance.ExecuteNonQuerySP(sql, new object[] { 
+            DatabaseConnection.Instance.ExecuteNonQuerySP(sql, new object[] { 
                 order_id, product_id, quantity
             });
         }

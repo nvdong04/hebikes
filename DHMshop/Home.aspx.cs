@@ -16,7 +16,7 @@ namespace DHMshop
         {
             if (!Page.IsPostBack)
             {
-                productList.DataSource = DataConnect.Instance.ExecuteQuery("Select top 8 * from tb_products");
+                productList.DataSource = DatabaseConnection.Instance.ExecuteQuery("Select top 8 * from tb_products");
                 productList.DataBind();
             }
         }
@@ -33,8 +33,8 @@ namespace DHMshop
                 //int size = int.Parse(ddlSize.SelectedValue);
                 //string color = ddlColor.SelectedValue;
                 string sql = "EXEC dbo.sp_AddToCart @customer_id , @product_id , @quantity";
-                int result = DataConnect.Instance.ExecuteNonQuerySP(sql, new object[] { customer_id, product_id, quantity });
-                if(result > 0 )
+                bool result = DatabaseConnection.Instance.ExecuteNonQuerySP(sql, new object[] { customer_id, product_id, quantity });
+                if(result)
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "click", "alert('Thêm sản phẩm vào giỏ hàng thành công');", true);
                 } else

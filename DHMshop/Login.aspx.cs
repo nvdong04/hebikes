@@ -27,16 +27,15 @@ namespace DHMshop
                 String email = txtEmail.Text.Trim();
                 String pass = ComputeSha256Hash(txtPass.Text.Trim());
 
-                String sql = "SELECT COUNT(*) FROM dbo.tb_customers WHERE email = '"+ email +"' AND password = '"+ pass +"'";
-                int result = (int) DataConnect.Instance.ExecuteScalar(sql);
-                //if (result > 0)
-               if (false)
+                String sql = "SELECT COUNT(*) FROM dbo.customers WHERE email = '"+ email +"' AND password = '"+ pass +"'";
+                int result = (int) DatabaseConnection.Instance.ExecuteScalar(sql);
+                if (result > 0)
                 {
-                    string sq1 = "SELECT * FROM dbo.tb_customers WHERE email = '" + email +"'";
-                    DataTable table = DataConnect.Instance.ExecuteQuery(sq1);
+                    String sq1 = String.Format("SELECT * FROM dbo.customers WHERE email = '{0}'", email);
+                    DataTable table = DatabaseConnection.Instance.ExecuteQuery(sq1);
                     DataRow row = table.Rows[0];
-                    Session["fullcustomer"] = row["full_name"].ToString();
-                    Session["customer"] = email;
+                    Session["fullname"] = row["fullname"].ToString();
+                    Session["email"] = email;
                     Session["customer_id"] = row["id"].ToString();
                     Response.Redirect("home.aspx");
                 } else

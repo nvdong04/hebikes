@@ -8,27 +8,27 @@ using System.Web;
 
 namespace DHMshop
 {
-    public class DataConnect
+    public class DatabaseConnection
     {
-        private string connectionSTR = ConfigurationManager.ConnectionStrings["conStr"].ConnectionString;
+        private string connectionSTR = ConfigurationManager.ConnectionStrings["connectionStr"].ConnectionString;
 
-        private static DataConnect instance;
+        private static DatabaseConnection instance;
 
-        public static DataConnect Instance 
+        public static DatabaseConnection Instance 
         {
             get {
                 if(instance == null)
                 {
-                    instance = new DataConnect();
+                    instance = new DatabaseConnection();
                 };
-                return DataConnect.instance;
+                return DatabaseConnection.instance;
             } 
             private set => instance = value; 
         }
 
         //Generate a function sum a array
 
-        private DataConnect() {
+        private DatabaseConnection() {
             
         }
 
@@ -66,9 +66,9 @@ namespace DHMshop
             return data;
         }
 
-        public int ExecuteNonQuerySP(string query, object[] parameter = null)
+        public bool ExecuteNonQuerySP(string query, object[] parameter = null)
         {
-            int data = 0;
+            int result = 0;
 
             using (SqlConnection connection = new SqlConnection(connectionSTR))
             {
@@ -89,12 +89,12 @@ namespace DHMshop
                         }
                     }
                 }
-                data = command.ExecuteNonQuery();
+                result = command.ExecuteNonQuery();
 
                 //connection.Close();
             }
 
-            return data;
+            return result == 0 ? false : true;
         }
 
         public object ExecuteScalarSP(string query, object[] parameter = null)
@@ -149,16 +149,16 @@ namespace DHMshop
             }
             return data;
         }
-        public int ExecuteNonQuery(String query)
+        public bool ExecuteNonQuery(String query)
         {
-            int record = 0;
+            int result = 0;
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionSTR))
                 {
                     connection.Open();
                     SqlCommand command = new SqlCommand(query, connection);
-                    record = command.ExecuteNonQuery();
+                    result = command.ExecuteNonQuery();
                     connection.Close();
                 }
             }
@@ -166,9 +166,8 @@ namespace DHMshop
             {
                 
             }
-            return record;
+            return result == 0 ? false : true;
         }
-
         public object ExecuteScalar(String query)
         {
             object data = 0;

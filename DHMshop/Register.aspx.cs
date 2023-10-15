@@ -23,19 +23,19 @@ namespace DHMshop
         {
             if (Page.IsValid)
             {
-                String full_name = txtFirstName.Text.Trim() +" "+ txtLastName.Text.Trim();
+                String full_name = txtFullName.Text.Trim();
                 String email = txtEmail.Text.Trim();
                 String password = ComputeSha256Hash(txtPassword.Text.Trim());
-                String sex = ddlSex.SelectedValue;
                 String phone_number = txtPhone.Text.Trim();
                 String address = txtAddress.Text.Trim();
 
-                String sql = "EXEC dbo.sp_addCustomer @email , @password , @full_name , @sex , @phone_number , @address";
-                int result = (int)DataConnect.Instance.ExecuteNonQuerySP(sql, new object[] { email,password,full_name,sex,phone_number,address });
-                if(result > 0)
+                String sql = "EXEC dbo.sp_create_customer @fullname , @email , @password , @phone , @address";
+                bool result = DatabaseConnection.Instance.ExecuteNonQuerySP(sql, new object[] { full_name,email,password,phone_number,address });
+                if(result)
                 {
-                    Response.Write("Đăng ký tài khoản thành công");
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "click", "alert('Đăng ký thành công.Nhấn oke để chuyển đến trang đăng nhập'); setTimeout(function(){window.location.href ='../../login.aspx'}, 3000);", true);
+                    Response.Redirect("success.aspx");
+                    //Response.Write("Đăng ký tài khoản thành công");
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "click", "alert('Đăng ký thành công.Nhấn oke để chuyển đến trang đăng nhập'); setTimeout(function(){window.location.href ='../../login.aspx'}, 3000);", true);
                 }
                 else
                 {

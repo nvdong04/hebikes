@@ -13,7 +13,7 @@ namespace DHMshop
         protected void Page_Load(object sender, EventArgs e)
         {
             lbCheckOut.Visible = false;
-            if (Session["customer"] == null)
+            if (Session["customer_id"] == null)
             {
                 lbThongbao.Text = "Bạn cần đăng nhập để xem giỏ hàng.";
                 lbThongbao.Attributes.Add("class", "lbError");
@@ -30,7 +30,7 @@ namespace DHMshop
             if(Session["customer_id"] != null) { 
                 int id = int.Parse(Session["customer_id"].ToString());
                 String sql = "EXEC dbo.sp_getCartWithID @customer_id";
-                DataTable result = DataConnect.Instance.ExecuteQuerySP(sql, new object[] { id });
+                DataTable result = DatabaseConnection.Instance.ExecuteQuerySP(sql, new object[] { id });
                 gvCart.DataSource = result;
                 gvCart.DataBind();
                 if (result.Rows.Count > 0)
