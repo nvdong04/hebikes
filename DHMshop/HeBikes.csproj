@@ -71,11 +71,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin\ProductList.aspx" />
+    <Content Include="admin\Dashboard.aspx" />
     <Content Include="assets\css\base.css" />
     <Content Include="assets\css\normalize.css" />
     <Content Include="assets\css\untility.css" />
     <Content Include="assets\css\register.css" />
     <Content Include="assets\images\logo.png" />
+    <Content Include="assets\images\user.png" />
     <Content Include="Cart.aspx">
       <BrowseToURL>~/Cart.aspx</BrowseToURL>
     </Content>
@@ -107,6 +110,27 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin\ProductList.aspx.cs">
+      <DependentUpon>ProductList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ProductList.aspx.designer.cs">
+      <DependentUpon>ProductList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\LayoutAdmin.Master.cs">
+      <DependentUpon>LayoutAdmin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\LayoutAdmin.Master.designer.cs">
+      <DependentUpon>LayoutAdmin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Cart.aspx.cs">
       <DependentUpon>Cart.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -200,6 +224,7 @@
   <ItemGroup>
     <Content Include="LayoutMaster.Master" />
     <Content Include="libman.json" />
+    <Content Include="admin\LayoutAdmin.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
