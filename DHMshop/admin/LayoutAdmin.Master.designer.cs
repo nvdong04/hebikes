@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DHMshop
+namespace DHMshop.admin
 {
 
 
