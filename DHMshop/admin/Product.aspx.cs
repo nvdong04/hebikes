@@ -33,16 +33,17 @@ namespace DHMshop.admin
             }
         }
 
-        protected void btnUpLoad_Click(object sender, EventArgs e)
+        protected string upload()
         {
-            if (fileUploadImg.HasFile)
+            if (fileProductImg.HasFile)
             {
-                if (CheckFileType(fileUploadImg.FileName))
+                if (CheckFileType(fileProductImg.FileName))
                 {
-                    string fileName = "../public/image/product/" + fileUploadImg.FileName;
+                    string fileName = "../public/image/product/" + fileProductImg.FileName;
                     string filePath = MapPath(fileName);
-                    fileUploadImg.SaveAs(filePath);
-                    imgUpLoad.ImageUrl = fileName;
+                    fileProductImg.SaveAs(filePath);
+                    //imgUpLoad.ImageUrl = fileName;
+                    return fileName;
                 }
                 else
                 {
@@ -51,6 +52,7 @@ namespace DHMshop.admin
                     Response.Write(alert);
                 }
             }
+            return "";
         }
 
         protected void btnAddProduct_Click(object sender, EventArgs e)
@@ -58,16 +60,15 @@ namespace DHMshop.admin
             if (Page.IsValid)
             {
                 string product_name = txtProductName.Text.Trim();
-                string description = txtProductDescription.Text.Trim();
-                string detail = txtProductDetail.Text.Trim();
-                string img = imgUpLoad.ImageUrl;
+                string code = txtProductCode.Text.Trim();
+                string brand = txtBrand.Text.Trim();
+                //string img = imgUpLoad.ImageUrl;
                 float price = float.Parse(txtProductPrice.Text.Trim());
-                float discount_price = float.Parse(txtProductDiscountPrice.Text.Trim());
-                int size = Int32.Parse(txtProductSize.Text.Trim());
-                string color = txtProductColor.Text.Trim();
-                int quantity = Int32.Parse(txtProductQuantity.Text.Trim());
-                int status = Int32.Parse(txtProductStatus.Text.Trim());
-                int category_id = Int32.Parse(ddlProductCategory.SelectedValue);
+                float discount_price = float.Parse(txtDiscountPrice.Text.Trim());
+                int status = cbStatus.Checked ? 1 : 0;
+                //int category_id = Int32.Parse(ddlProductCategory.SelectedValue);
+                string description = txtDescription.Text.Trim();
+                
 
                 //String sql = "EXEC dbo.sp_addProduct @name , @description , @detail , @img , @price , @discount_price , @size , @color , @quantity , @status , @category_id";
                 //int result = (int)DataConnect.Instance.ExecuteNonQuerySP(sql, new object[] { product_name, description, detail, img, price, discount_price, size, color, quantity, status, category_id });

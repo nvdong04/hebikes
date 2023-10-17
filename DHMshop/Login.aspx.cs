@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace DHMshop
 {
-    public partial class login : System.Web.UI.Page
+    public partial class Login : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,7 +25,7 @@ namespace DHMshop
             if(Page.IsValid)
             {
                 String email = txtEmail.Text.Trim();
-                String pass = ComputeSha256Hash(txtPass.Text.Trim());
+                String pass = Utils.ComputeSha256Hash(txtPass.Text.Trim());
 
                 String sql = "SELECT COUNT(*) FROM dbo.customers WHERE email = '"+ email +"' AND password = '"+ pass +"'";
                 int result = (int) DatabaseConnection.Instance.ExecuteScalar(sql);
@@ -43,24 +43,6 @@ namespace DHMshop
                     lbError.Text = "Sai thông tin tài khoản hoặc mật khẩu. Vui lòng thử lại.";
                     lbError.Visible = true;
                 }
-            }
-        }
-
-        protected static string ComputeSha256Hash(string rawData)
-        {
-            // Create a SHA256   
-            using (SHA256 sha256Hash = SHA256.Create())
-            {
-                // ComputeHash - returns byte array  
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
-
-                // Convert byte array to a string   
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    builder.Append(bytes[i].ToString("x2"));
-                }
-                return builder.ToString();
             }
         }
     }

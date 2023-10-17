@@ -25,7 +25,7 @@ namespace DHMshop
             {
                 String full_name = txtFullName.Text.Trim();
                 String email = txtEmail.Text.Trim();
-                String password = ComputeSha256Hash(txtPassword.Text.Trim());
+                String password = Utils.ComputeSha256Hash(txtPassword.Text.Trim());
                 String phone_number = txtPhone.Text.Trim();
                 String address = txtAddress.Text.Trim();
 
@@ -33,6 +33,8 @@ namespace DHMshop
                 bool result = DatabaseConnection.Instance.ExecuteNonQuerySP(sql, new object[] { full_name,email,password,phone_number,address });
                 if(result)
                 {
+
+                    Utils.ShowToastr(this, "Đăng ký tài khoản thành công", "Thông báo", Utils.ToastType.Success);
                     Response.Redirect("success.aspx");
                     //Response.Write("Đăng ký tài khoản thành công");
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "click", "alert('Đăng ký thành công.Nhấn oke để chuyển đến trang đăng nhập'); setTimeout(function(){window.location.href ='../../login.aspx'}, 3000);", true);
@@ -44,24 +46,6 @@ namespace DHMshop
                 }
             }
 
-        }
-
-        protected static string ComputeSha256Hash(string rawData)
-        {
-            // Create a SHA256   
-            using (SHA256 sha256Hash = SHA256.Create())
-            {
-                // ComputeHash - returns byte array  
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
-
-                // Convert byte array to a string   
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    builder.Append(bytes[i].ToString("x2"));
-                }
-                return builder.ToString();
-            }
         }
     }
 }

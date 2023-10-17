@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Đăng Nhập" Language="C#" MasterPageFile="~/LayoutMaster.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="DHMshop.login" %>
+﻿<%@ Page Title="Đăng Nhập" Language="C#" MasterPageFile="~/LayoutMaster.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="DHMshop.Login" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="assets/css/register.css" rel="stylesheet" />
@@ -13,7 +13,7 @@
                     <label
                         class="block text-sm font-medium mb-1 text-slate-600"
                         htmlfor="email">
-                        Địa chỉ Email
+                        Email
                      <span class="text-red-500">*</span>
                     </label>
                     <asp:TextBox ID="txtEmail" TextMode="Email" CssClass="form-input w-full" runat="server"></asp:TextBox>

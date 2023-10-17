@@ -79,12 +79,19 @@
     <Content Include="admin\Dashboard.aspx" />
     <Content Include="admin\User.aspx" />
     <Content Include="admin\Users.aspx" />
+    <Content Include="assets\css\all.min.css" />
     <Content Include="assets\css\base.css" />
     <Content Include="assets\css\normalize.css" />
+    <Content Include="assets\flowbite\flowbite.min.css" />
+    <Content Include="assets\flowbite\flowbite.min.js" />
+    <Content Include="assets\jquery\jquery.min.js" />
+    <Content Include="assets\tailwindcss\tailwindcss.js" />
+    <Content Include="assets\toastr\toastr.min.css" />
     <Content Include="assets\css\untility.css" />
     <Content Include="assets\css\register.css" />
     <Content Include="assets\images\logo.png" />
     <Content Include="assets\images\user.png" />
+    <Content Include="assets\toastr\toastr.min.js" />
     <Content Include="Cart.aspx">
       <BrowseToURL>~/Cart.aspx</BrowseToURL>
     </Content>
@@ -268,6 +275,7 @@
     <Compile Include="Success.aspx.designer.cs">
       <DependentUpon>Success.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="LayoutMaster.Master" />
