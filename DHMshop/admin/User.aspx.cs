@@ -13,5 +13,10 @@ namespace DHMshop.admin
         {
 
         }
+
+        protected void btnAddNewUser_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,4 +1,12 @@
-﻿CREATE TABLE [categorys] (
+﻿-- Active: 1697615275268@@localhost@1433@db_hebikes
+
+create database [db_hebikes]
+GO
+USE DATABASE [db_hebikes]
+GO
+
+
+CREATE TABLE [categorys] (
   [id] integer IDENTITY(1,1) PRIMARY KEY,
   [name] nvarchar(255),
   [status] nvarchar(255),
@@ -13,6 +21,7 @@ CREATE TABLE [users] (
   [id] integer IDENTITY(1,1) PRIMARY KEY ,
   [username] nvarchar(255),
   [password] nvarchar(255),
+  [email] nvarchar(255),
   [role_id] integer,
   [is_active] bit DEFAULT 0,
   [created_at] datetime,
@@ -35,11 +44,12 @@ CREATE TABLE [products] (
   [category_id] integer,
   [code] nvarchar(255),
   [name] nvarchar(255),
-  [trade_mark] nvarchar(255),
+  [brand] nvarchar(255),
   [price] decimal,
   [discount_price] float,
+  [image_url] nvarchar(255),
   [description] text,
-  [status] nvarchar(255),
+  [status] bit DEFAULT 0,
   [created_by] integer,
   [updated_by] integer,
   [created_at] datetime,
@@ -132,12 +142,69 @@ GO
 ALTER TABLE [products] ADD FOREIGN KEY ([updated_by]) REFERENCES [users] ([id])
 GO
 
-
 --Proc
 SET ANSI_NULLS ON
-GO
+
 SET QUOTED_IDENTIFIER ON
 GO
+
+
+-- PROCEDURE sp_create_product
+CREATE PROCEDURE dbo.sp_create_product
+(
+  @category_id integer,
+  @code NVARCHAR(255),
+  @name NVARCHAR(255),
+  @brand NVARCHAR(255),
+  @price float,
+  @discount_price float,
+  @image_url NVARCHAR(255),
+  @description text,
+  @status bit,
+  @created_by integer
+)
+AS
+BEGIN
+  INNER INTO dbo.products(category_id,code,name,brand,price,discount_price,image_url,description,status,created_by,updated_by,created_at)
+  VALUES (@category_id,@code,@name,@brand,@price,@discount_price,@image_url,@description,@status,@created_by,@created_by,GETDATE())
+END;
+
+CREATE PROCEDURE dbo.procedure_name2
+AS
+BEGIN
+    
+END;
+
+-- proc create user
+CREATE PROC [dbo].[sp_create_user]
+(
+	@username NVARCHAR(100),
+	@email VARCHAR(255),
+	@password VARCHAR(255),
+	@role_id integer, 
+	@id integer = 0 output
+)
+AS 
+BEGIN 
+	IF NOT EXISTS (SELECT email FROM [dbo].[customers] WHERE email = @email or username = @username) 
+		BEGIN
+			IF NOT EXISTS(SELECT role_name FROM [dbo].[roles] WHERE id = @role_id)
+			    BEGIN
+                    INSERT INTO [dbo].[customers](username,email,password,role_id,is_active,created_at)
+                    VALUES  (@username,@email,@password,@role_id,1,GETDATE())
+                    SET @id = SCOPE_IDENTITY();
+			    END;
+            ELSE
+                BEGIN
+                    RAISERROR (N'Vai trò này không tồn tại trên hệ thống.', 16, 1);
+                END
+		END;
+	ELSE 
+		BEGIN
+			RAISERROR (N'Email/Usename này đã tồn tại.', 16, 1);
+			return 0
+		END
+END;
 
 CREATE PROC [dbo].[sp_create_customer]
 (
@@ -161,10 +228,6 @@ BEGIN
 			RAISERROR (N'Email này đã tồn tại.', 16, 1);
 			return 0
 		END
-END
+END;
 
-GO
 
-DECLARE @new_identity INT;
-EXEC dbo.[sp_create_customer] @fullname = 'Nguyễn Văn Đông', @email = 'nvdong04@gmail.com', @password= '123456789',@phone='0987781213', @address='HN' ,@id = @new_identity OUTPUT;
-PRINT @new_identity;
