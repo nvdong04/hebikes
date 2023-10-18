@@ -74,7 +74,9 @@
     <Content Include="admin\Login.aspx" />
     <Content Include="admin\Order.aspx" />
     <Content Include="admin\Orders.aspx" />
-    <Content Include="admin\Product.aspx" />
+    <Content Include="admin\Product.aspx">
+      <BrowseToURL>~/admin/product.aspx</BrowseToURL>
+    </Content>
     <Content Include="admin\Products.aspx" />
     <Content Include="admin\Dashboard.aspx" />
     <Content Include="admin\User.aspx" />
@@ -294,7 +296,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="App_GlobalResources\" />
     <Folder Include="pages\" />
-    <Folder Include="public\image\" />
+    <Folder Include="public\images\product\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="node_modules\tailwindcss\dist\*.css" />

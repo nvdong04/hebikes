@@ -39,17 +39,11 @@ namespace DHMshop.admin
             {
                 if (CheckFileType(fileProductImg.FileName))
                 {
-                    string fileName = "../public/image/product/" + fileProductImg.FileName;
+                    string fileName = "../public/images/product/" + fileProductImg.FileName;
                     string filePath = MapPath(fileName);
                     fileProductImg.SaveAs(filePath);
                     //imgUpLoad.ImageUrl = fileName;
                     return fileName;
-                }
-                else
-                {
-                    string alert = "";
-                    alert += "<script>alert('Chỉ nhận file ảnh!!!');</script>";
-                    Response.Write(alert);
                 }
             }
             return "";
@@ -62,7 +56,7 @@ namespace DHMshop.admin
                 string product_name = txtProductName.Text.Trim();
                 string code = txtProductCode.Text.Trim();
                 string brand = txtBrand.Text.Trim();
-                //string img = imgUpLoad.ImageUrl;
+                string img = upload();
                 float price = float.Parse(txtProductPrice.Text.Trim());
                 float discount_price = float.Parse(txtDiscountPrice.Text.Trim());
                 int status = cbStatus.Checked ? 1 : 0;
