@@ -14,21 +14,5 @@ namespace DHMshop
         {
 
         }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            //        Page.ClientScript.RegisterStartupScript(this.GetType(),
-            //"toastr_message", "toastr.error('There was an error', 'Error')", true);
-            //Response.Redirect("Products.aspx");
-            Page page = Page as DHMshop.admin.Products;
-            Utils.ShowToastr(this, "heloo", "hihi");
-            Utils.DelayRedirect(this, "../admin/user.aspx");
-        }
-
-        //void ShowToastr(Page page, string message, string title, string type = "info")
-        //{
-        //    page.ClientScript.RegisterStartupScript(page.GetType(), "toastr_message",
-        //          String.Format("toastr.{0}('{1}', '{2}');", type.ToLower(), message, title), addScriptTags: true);
-        //}
     }
 }

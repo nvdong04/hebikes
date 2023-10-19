@@ -11,6 +11,22 @@ namespace DHMshop.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(!Page.IsPostBack)
+            {
+                GetUsers();
+                gvUsers.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+        }
+
+        private void GetUsers()
+        {
+            string sql = "select * from users left join roles on roles.id = users.role_id";
+            gvUsers.DataSource = DatabaseConnection.Instance.ExecuteQuery(sql).DefaultView;
+            gvUsers.DataBind();
+        }
+
+        protected void gvUsers_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
 
         }
     }

@@ -2,7 +2,7 @@
 
 create database [db_hebikes]
 GO
-USE DATABASE [db_hebikes]
+USE [db_hebikes]
 GO
 
 
@@ -175,36 +175,37 @@ BEGIN
     
 END;
 
--- proc create user
-ALTER PROC [dbo].[sp_create_user]
+-- proc update user
+CREATE PROC [dbo].[sp_update_user]
 (
+	@user_id int,
 	@username NVARCHAR(100),
 	@email VARCHAR(255),
 	@password VARCHAR(255),
-	@role_id integer, 
-	@id integer = 0 output
+	@role_id integer,
+	@is_active bit
 )
 AS 
 BEGIN 
-	IF NOT EXISTS (SELECT email FROM [dbo].[users] WHERE email = @email or username = @username) 
+	IF EXISTS (SELECT id FROM [dbo].[users] WHERE id = @user_id) 
 		BEGIN
 			IF EXISTS(SELECT role_name FROM [dbo].[roles] WHERE id = @role_id)
 			    BEGIN
-                    INSERT INTO [dbo].[users](username,email,password,role_id,is_active,created_at)
-                    VALUES  (@username,@email,@password,@role_id,1,GETDATE())
-                    SET @id = SCOPE_IDENTITY();
-			    END;
+					UPDATE [dbo].[users]
+					SET username = @username, email = @email, password = @password, role_id = @role_id, is_active = @is_active, updated_at = GETDATE()
+					WHERE id = @user_id 
+			    END
             ELSE
                 BEGIN
-                    RAISERROR (N'Vai trò này không tồn tại trên hệ thống.', 16, 1);
+                    RAISERROR (N'Role này không tồn tại.', 16, 1);
                 END
-		END;
+		END
 	ELSE 
 		BEGIN
-			RAISERROR (N'Email/Usename này đã tồn tại.', 16, 1);
-			return 0
+			RAISERROR (N'User này không tồn tại.', 16, 1);
 		END
 END;
+
 GO
 
 CREATE PROC [dbo].[sp_create_customer]

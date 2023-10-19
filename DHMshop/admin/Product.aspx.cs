@@ -12,7 +12,20 @@ namespace DHMshop.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(!Page.IsPostBack)
+            {
+                GetDataDropDown();
+            }
+        }
 
+        private void GetDataDropDown()
+        {
+            // query tất cả role
+            string sql = "select id, name from categorys";
+            ddlCategory.DataSource = DatabaseConnection.Instance.ExecuteQuery(sql);
+            ddlCategory.DataValueField = "id";
+            ddlCategory.DataTextField = "name";
+            ddlCategory.DataBind();
         }
 
         bool CheckFileType(string fileName)
@@ -20,8 +33,6 @@ namespace DHMshop.admin
             string ext = Path.GetExtension(fileName);
             switch (ext.ToLower())
             {
-                case ".gif":
-                    return true;
                 case ".png":
                     return true;
                 case ".jpg":
@@ -33,7 +44,7 @@ namespace DHMshop.admin
             }
         }
 
-        protected string upload()
+        protected string uploadImageProduct()
         {
             if (fileProductImg.HasFile)
             {
@@ -56,11 +67,11 @@ namespace DHMshop.admin
                 string product_name = txtProductName.Text.Trim();
                 string code = txtProductCode.Text.Trim();
                 string brand = txtBrand.Text.Trim();
-                string img = upload();
+                string img = uploadImageProduct();
                 float price = float.Parse(txtProductPrice.Text.Trim());
                 float discount_price = float.Parse(txtDiscountPrice.Text.Trim());
                 int status = cbStatus.Checked ? 1 : 0;
-                //int category_id = Int32.Parse(ddlProductCategory.SelectedValue);
+                int category_id = Int32.Parse(ddlCategory.SelectedValue);
                 string description = txtDescription.Text.Trim();
                 
 

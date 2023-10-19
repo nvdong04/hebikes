@@ -96,6 +96,15 @@ namespace DHMshop.admin
         protected global::System.Web.UI.WebControls.TextBox txtDiscountPrice;
 
         /// <summary>
+        /// ddlCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCategory;
+
+        /// <summary>
         /// fileProductImg control.
         /// </summary>
         /// <remarks>

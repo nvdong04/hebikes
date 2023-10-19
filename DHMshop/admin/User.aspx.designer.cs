@@ -78,6 +78,15 @@ namespace DHMshop.admin
         protected global::System.Web.UI.WebControls.DropDownList ddlRole;
 
         /// <summary>
+        /// lbStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbStatus;
+
+        /// <summary>
         /// cbStatus control.
         /// </summary>
         /// <remarks>
@@ -87,12 +96,12 @@ namespace DHMshop.admin
         protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cbStatus;
 
         /// <summary>
-        /// btnAddNewUser control.
+        /// btnCreateUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddNewUser;
+        protected global::System.Web.UI.WebControls.Button btnCreateUser;
     }
 }
