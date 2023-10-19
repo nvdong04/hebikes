@@ -19,9 +19,10 @@ namespace DHMshop
         {
             //        Page.ClientScript.RegisterStartupScript(this.GetType(),
             //"toastr_message", "toastr.error('There was an error', 'Error')", true);
-            Response.Redirect("Products.aspx");
+            //Response.Redirect("Products.aspx");
             Page page = Page as DHMshop.admin.Products;
             Utils.ShowToastr(this, "heloo", "hihi");
+            Utils.DelayRedirect(this, "../admin/user.aspx");
         }
 
         //void ShowToastr(Page page, string message, string title, string type = "info")

@@ -27,8 +27,15 @@ namespace DHMshop
 
         public static void ShowToastr(Page page, string message, string title, ToastType type = ToastType.Info)
         {
-            page.ClientScript.RegisterStartupScript(page.GetType(), "toastr_message",
-                  String.Format("toastr.{0}('{1}', '{2}');", type.ToString().ToLower(), message, title), addScriptTags: true);
+            //page.ClientScript.RegisterStartupScript(page.GetType(), "toastr_message",
+            //      String.Format("toastr.{0}('{1}', '{2}');", type.ToString().ToLower(), message, title), addScriptTags: true);
+            ScriptManager.RegisterStartupScript(page,page.GetType(), "toastr_message",
+                  String.Format("toastr.{0}('{1}', '{2}');", type.ToString().ToLower(), message.Replace("'", ""), title), addScriptTags: true);
+        }
+
+        public static void DelayRedirect(Page page,string url,int delayMilisecond = 3000)
+        {
+            ScriptManager.RegisterStartupScript(page, page.GetType(), "delay redirect", String.Format("setTimeout(function(){{window.location.href ='{0}'}},{1});", url, delayMilisecond), true);
         }
 
         public enum ToastType

@@ -176,7 +176,7 @@ BEGIN
 END;
 
 -- proc create user
-CREATE PROC [dbo].[sp_create_user]
+ALTER PROC [dbo].[sp_create_user]
 (
 	@username NVARCHAR(100),
 	@email VARCHAR(255),
@@ -186,11 +186,11 @@ CREATE PROC [dbo].[sp_create_user]
 )
 AS 
 BEGIN 
-	IF NOT EXISTS (SELECT email FROM [dbo].[customers] WHERE email = @email or username = @username) 
+	IF NOT EXISTS (SELECT email FROM [dbo].[users] WHERE email = @email or username = @username) 
 		BEGIN
-			IF NOT EXISTS(SELECT role_name FROM [dbo].[roles] WHERE id = @role_id)
+			IF EXISTS(SELECT role_name FROM [dbo].[roles] WHERE id = @role_id)
 			    BEGIN
-                    INSERT INTO [dbo].[customers](username,email,password,role_id,is_active,created_at)
+                    INSERT INTO [dbo].[users](username,email,password,role_id,is_active,created_at)
                     VALUES  (@username,@email,@password,@role_id,1,GETDATE())
                     SET @id = SCOPE_IDENTITY();
 			    END;
@@ -205,6 +205,7 @@ BEGIN
 			return 0
 		END
 END;
+GO
 
 CREATE PROC [dbo].[sp_create_customer]
 (

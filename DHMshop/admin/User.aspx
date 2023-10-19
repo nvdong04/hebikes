@@ -70,11 +70,16 @@
                             Vai trò
                             <span class="text-red-500">*</span>
                         </label>
-                        <select id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                         <asp:DropDownList 
+                             ID="ddlRole" 
+                             CssClass="capitalize bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" 
+                             runat="server">
+                         </asp:DropDownList>
+                        <%--<select id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option selected="">Chọn vai trò người dùng</option>
                             <option value="admin">Admin</option>
                             <option value="staff">Nhân Viên</option>
-                        </select>
+                        </select>--%>
                     </div>                   
                     <div>
                         <label class="relative inline-flex items-center cursor-pointer">
