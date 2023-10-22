@@ -50,7 +50,9 @@ namespace DHMshop.admin
             {
                 if (CheckFileType(fileProductImg.FileName))
                 {
-                    string fileName = "../public/images/product/" + fileProductImg.FileName;
+                    Random random = new Random();
+                    int rd = random.Next(100000, 999999);
+                    string fileName = "../public/images/product/" + rd + fileProductImg.FileName;
                     string filePath = MapPath(fileName);
                     fileProductImg.SaveAs(filePath);
                     //imgUpLoad.ImageUrl = fileName;
@@ -60,32 +62,41 @@ namespace DHMshop.admin
             return "";
         }
 
-        protected void btnAddProduct_Click(object sender, EventArgs e)
+        protected void btnSave_Click(object sender, EventArgs e)
         {
             if (Page.IsValid)
             {
                 string product_name = txtProductName.Text.Trim();
                 string code = txtProductCode.Text.Trim();
                 string brand = txtBrand.Text.Trim();
-                string img = uploadImageProduct();
+                string image_url = uploadImageProduct();
                 float price = float.Parse(txtProductPrice.Text.Trim());
                 float discount_price = float.Parse(txtDiscountPrice.Text.Trim());
                 int status = cbStatus.Checked ? 1 : 0;
                 int category_id = Int32.Parse(ddlCategory.SelectedValue);
                 string description = txtDescription.Text.Trim();
-                
+                int user_id = Int32.Parse(Session["user_id"].ToString());
 
-                //String sql = "EXEC dbo.sp_addProduct @name , @description , @detail , @img , @price , @discount_price , @size , @color , @quantity , @status , @category_id";
-                //int result = (int)DataConnect.Instance.ExecuteNonQuerySP(sql, new object[] { product_name, description, detail, img, price, discount_price, size, color, quantity, status, category_id });
-                //if (result > 0)
-                //{
-                //    Response.Write("Thêm sản phẩm thành công");
-                //    ScriptManager.RegisterStartupScript(this, this.GetType(), "click", "alert('Thêm sản phẩm thành công'); setTimeout(function(){window.location.href ='/../admin/products.aspx'}, 3000);", true);
-                //}
-                //else
-                //{
-
-                //}
+                string sql = "EXEC dbo.sp_create_product @category_id , @code , @name , @brand , @price , @discount_price , @image_url , @description , @status , @created_by";                         
+                try
+                {
+                    bool result = DatabaseConnection.Instance.ExecuteNonQuerySP(sql, new object[] { category_id, code, product_name, brand, price, discount_price, image_url, description,status,user_id });
+                    if (result)
+                    {
+                        // Hiện thông báo thêm thành công
+                        Utils.ShowToastr(this, "Thêm sản phẩm thành công", "Thông báo", Utils.ToastType.Success);
+                        //Chuyển hướng sang /admin/products.aspx sau 1.5s
+                        Utils.DelayRedirect(this, "../admin/products.aspx", 1500);
+                    }
+                    else
+                    {
+                        Utils.ShowToastr(this, "Thêm sản phẩm thất bại. Vui lòng thử lại!", "Thông báo", Utils.ToastType.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Utils.ShowToastr(this,"Lỗi", "Thông báo", Utils.ToastType.Error);
+                }
             }
         }
     }

@@ -10,7 +10,7 @@
     <link href="assets/css/normalize.css" rel="stylesheet" />
     <link href="assets/css/base.css" rel="stylesheet" />
     <%--<link href="assets/css/untility.css" rel="stylesheet" />--%>
-    <link href="../assets/css/all.min.css" rel="stylesheet" />
+    <link href="assets/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap&subset=vietnamese" rel="stylesheet">
 
     <script src="assets/tailwindcss/tailwindcss.js"></script>
@@ -199,8 +199,9 @@
     </style>
 </head>
 <body>
-    <script src="../assets/jquery/jquery.min.js"></script>
-    <script src="../assets/toastr/toastr.min.js"></script>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/toastr/toastr.min.js"></script>
+    <script src="assets/javascript/all.min.js"></script>
     <div class="app">
         <header class="max-w-screen-xl ml-auto mr-auto">
             <div class="flex justify-between items-center content-center">
@@ -226,9 +227,10 @@
                             <%} %>
                         </div>
                     </div>
-                    <div class="">
-                        <a href="Cart.aspx">
+                    <div runat="server" class="">
+                        <a href="cart.aspx" class="relative flex">
                             <i class="fa-solid fa-cart-shopping text-2xl text-neutral-500"></i>
+                           <span class="absolute right-[-8px] top-[-8px] rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-sm leading-tight text-center"><%= number_cart_item %></span>                 
                         </a>
                     </div>
                 </div>
@@ -237,11 +239,11 @@
         <nav class="w-screen bg-orange-600 h-10">
             <div class="max-w-screen-xl ml-auto mr-auto">
                 <div class="flex items-center content-center justify-center h-10 space-x-14 text-sm text-white font-medium">
-                    <div class="hover:text-yellow-400"><a href="Home.aspx">Trang chủ</a></div>
-                    <div class="hover:text-yellow-400"><a href="Product.aspx">Sản phẩm</a></div>
-                    <div class="hover:text-yellow-400"><a href="About.aspx">Giới thiệu</a></div>
-                    <div class="hover:text-yellow-400"><a href="Contact.aspx">Liên hệ</a></div>
-                    <div class="hover:text-yellow-400"><a href="Question.aspx">Câu hỏi thường gặp</a></div>
+                    <div class="hover:text-yellow-400"><a href="home.aspx">Trang chủ</a></div>
+                    <div class="hover:text-yellow-400"><a href="product.aspx">Sản phẩm</a></div>
+                    <div class="hover:text-yellow-400"><a href="about.aspx">Giới thiệu</a></div>
+                    <div class="hover:text-yellow-400"><a href="contact.aspx">Liên hệ</a></div>
+                    <div class="hover:text-yellow-400"><a href="question.aspx">Câu hỏi thường gặp</a></div>
                 </div>
             </div>
         </nav>
@@ -253,7 +255,7 @@
                 </div>
             </form>
         </main>
-        <footer class="w-screen bg-indigo-700">
+        <footer class="w-screen bg-indigo-700 mt-5">
             <div class="max-w-screen-xl ml-auto mr-auto pt-11 pb-8">
                 <div class="grid grid-cols-4 gap-4">
                     <div class="col-lg-3 col-md-6 col-12">
@@ -302,7 +304,7 @@
             </div>
         </footer>
     </div>
-    <script src="../assets/flowbite/flowbite.min.js"></script>
+    <script src="assets/flowbite/flowbite.min.js"></script>
 </body>
 <asp:ContentPlaceHolder ID="ContentPlaceHolderScript" runat="server">
 </asp:ContentPlaceHolder>

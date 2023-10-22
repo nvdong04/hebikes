@@ -12,7 +12,10 @@ namespace DHMshop.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["user_id"] == null)
+            {
+                Response.Redirect("login.aspx");
+            }
         }
     }
 }

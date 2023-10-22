@@ -2,8 +2,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>ProductList page</h1>
-    <p>https://flowbite.com/docs/components/tables/</p>
+    <div class="flex justify-between my-6">
+    <div>
+        <h1 class="text-xl uppercase">Danh sách người dùng</h1>
+    </div>
+    <a href="product.aspx" class="btn">Thêm sản phẩm</a>
+</div>
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">

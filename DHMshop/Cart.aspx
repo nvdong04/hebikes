@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="Giỏ hàng" Language="C#" MasterPageFile="~/LayoutMaster.Master" AutoEventWireup="true" CodeBehind="Cart.aspx.cs" Inherits="DHMshop.cart" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
         .table {
@@ -29,7 +30,7 @@
         }
 
         .check-out {
-            font-size: 16px;            
+            font-size: 16px;
             text-align: right;
             border: 1px solid #eee;
             border-radius: 2px;
@@ -37,45 +38,50 @@
             color: var(--white-color);
             background: var(--primary-color);
         }
-        .lbError{
+
+        .lbError {
             padding: 120px 0;
             font-size: 24px;
             display: block;
-            text-align:center;
+            text-align: center;
         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="grid wide">
-        <div class="row">
-            <div class="col l-12 m-12 c-12">
-                <h1 class="title-l">Giỏ hàng</h1>
-                <asp:Label ID="lbThongbao" CssClass="" runat="server" Text=""></asp:Label>
-                <asp:GridView ID="gvCart" runat="server" CssClass="table" AutoGenerateColumns="False">
-                    <EmptyDataTemplate>
-                        <h1 style="text-align:center;">Không có sản phẩm nào trong giỏ hàng</h1>
-                    </EmptyDataTemplate>
-                    <Columns>
-                        <asp:TemplateField HeaderText="STT">
-                            <ItemTemplate>
-                                <%# Container.DataItemIndex + 1 %>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:BoundField HeaderText="Sản phẩm" DataField="product_name" />
-                        <asp:BoundField HeaderText="Giá" DataField="product_price" DataFormatString="{0:000,000}" />
-                        <asp:BoundField HeaderText="Số lượng" DataField="quantity" />
-                        <asp:BoundField HeaderText="Thành tiền" DataField="thanhtien" DataFormatString="{0:000,000}" />
-                        <asp:TemplateField ShowHeader="False">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete"></asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>
-                <div style="text-align:right; margin: 32px 0;">
-                    <asp:LinkButton ID="lbCheckOut" PostBackUrl="~/checkout.aspx" CssClass="check-out" runat="server">Tiến hành đặt hàng</asp:LinkButton>
-                </div>
-            </div>
+    <div class="pb-8 mt-6">
+        <h1 class="text-xl mb-5">Giỏ hàng</h1>
+        <asp:Label ID="lbThongbao" CssClass="" runat="server" Text=""></asp:Label>
+        <asp:GridView
+            ID="gvCart"
+            DataKeyNames="cart_item_id"
+            OnRowDeleting="gvCart_RowDeleting"
+            runat="server"
+            CssClass="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+            AutoGenerateColumns="False">
+            <EmptyDataTemplate>
+                <h1 class="text-center py-24">Không có sản phẩm nào trong giỏ hàng</h1>
+            </EmptyDataTemplate>
+            <HeaderStyle CssClass="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400" />
+            <RowStyle CssClass="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" />
+            <Columns>
+                <asp:TemplateField HeaderText="STT">
+                    <ItemTemplate>
+                        <%# Container.DataItemIndex + 1 %>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:BoundField HeaderText="Sản phẩm" DataField="product_name" HeaderStyle-CssClass="px-6 py-3" ItemStyle-CssClass="px-6 py-4" />
+                <asp:BoundField HeaderText="Giá" DataField="product_price" DataFormatString="{0:000,000}đ" HeaderStyle-CssClass="px-6 py-3" ItemStyle-CssClass="px-6 py-4" />
+                <asp:BoundField HeaderText="Số lượng" DataField="quantity" HeaderStyle-CssClass="px-6 py-3" ItemStyle-CssClass="px-6 py-4" />
+                <asp:BoundField HeaderText="Thành tiền" DataField="into_money" DataFormatString="{0:000,000}đ" HeaderStyle-CssClass="px-6 py-3" ItemStyle-CssClass="px-6 py-4" />
+                <asp:TemplateField ShowHeader="False" HeaderStyle-CssClass="px-6 py-3" ItemStyle-CssClass="px-6 py-4">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="Xoá"></asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+        <div style="text-align: right; margin: 32px 0;">
+            <asp:LinkButton ID="lbCheckOut" PostBackUrl="~/Checkout.aspx" CssClass="btn" runat="server">Tiến hành đặt hàng</asp:LinkButton>
         </div>
     </div>
 </asp:Content>

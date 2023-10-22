@@ -86,6 +86,7 @@
     <Content Include="assets\css\normalize.css" />
     <Content Include="assets\flowbite\flowbite.min.css" />
     <Content Include="assets\flowbite\flowbite.min.js" />
+    <Content Include="assets\javascript\all.min.js" />
     <Content Include="assets\jquery\jquery.min.js" />
     <Content Include="assets\tailwindcss\tailwindcss.js" />
     <Content Include="assets\toastr\toastr.min.css" />

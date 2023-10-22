@@ -2,6 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.UI;
+using static System.Collections.Specialized.BitVector32;
 
 namespace DHMshop
 {
@@ -33,7 +34,7 @@ namespace DHMshop
                   String.Format("toastr.{0}('{1}', '{2}');", type.ToString().ToLower(), message.Replace("'", ""), title), addScriptTags: true);
         }
 
-        public static void DelayRedirect(Page page,string url,int delayMilisecond = 3000)
+        public static void DelayRedirect(Page page,string url,int delayMilisecond = 1500)
         {
             ScriptManager.RegisterStartupScript(page, page.GetType(), "delay redirect", String.Format("setTimeout(function(){{window.location.href ='{0}'}},{1});", url, delayMilisecond), true);
         }

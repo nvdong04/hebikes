@@ -12,7 +12,7 @@ namespace DHMshop
     {
         protected void Page_Load(object sender, EventArgs e)
         {            
-            if (Session["customer"] == null)
+            if (Session["customer_id"] == null)
             {
                 Response.Redirect("home.aspx");
             }
@@ -41,21 +41,21 @@ namespace DHMshop
 
         public void bind_data_customer()
         {
-            String sql = "SELECT * FROM dbo.tb_customers WHERE email = '" + Session["customer"].ToString() + "'";
+            String sql = "SELECT * FROM dbo.customers WHERE id = '" + Session["customer_id"].ToString() + "'";
             DataTable table = new DataTable();
             table = DatabaseConnection.Instance.ExecuteQuery(sql);
             DataRow row = table.Rows[0];
-            lbFullname.Text = row["full_name"].ToString();
+            lbFullname.Text = row["fullname"].ToString();
             lbAdress.Text = row["address"].ToString();
-            lbPhoneNumber.Text = row["phone_number"].ToString();            
+            lbPhoneNumber.Text = row["phone"].ToString();            
         }
-        float total_price = 0;
+        double total_price = 0;
         protected void gvCart_RowDataBound(object sender, GridViewRowEventArgs e)
         {           
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                total_price = total_price +  float.Parse(e.Row.Cells[4].Text);
-                lbTotalPrice.Text = total_price.ToString();
+                total_price = total_price + double.Parse(e.Row.Cells[4].Text);
+                lbTotalPrice.Text = String.Format("{0:000,000}đ", total_price);
             }
         }
 
@@ -85,7 +85,7 @@ namespace DHMshop
 
         public DataTable gioHang(int id)
         {
-            String sql = "EXEC dbo.sp_getCartWithID @customer_id";
+            String sql = "EXEC dbo.[sp_get_cart_by_customer_id] @customer_id";
             DataTable result = DatabaseConnection.Instance.ExecuteQuerySP(sql, new object[] { id });
             return result;
         }

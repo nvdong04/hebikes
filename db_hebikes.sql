@@ -48,7 +48,7 @@ CREATE TABLE [products] (
   [price] decimal,
   [discount_price] float,
   [image_url] nvarchar(255),
-  [description] text,
+  [description] ntext,
   [status] bit DEFAULT 0,
   [created_by] integer,
   [updated_by] integer,
@@ -149,6 +149,9 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
+--init data categorys
+
+
 -- PROCEDURE sp_create_product
 CREATE PROCEDURE dbo.sp_create_product
 (
@@ -159,21 +162,18 @@ CREATE PROCEDURE dbo.sp_create_product
   @price float,
   @discount_price float,
   @image_url NVARCHAR(255),
-  @description text,
+  @description ntext,
   @status bit,
-  @created_by integer
+  @created_by integer,
+  @id integer = 0 output
 )
 AS
 BEGIN
-  INNER INTO dbo.products(category_id,code,name,brand,price,discount_price,image_url,description,status,created_by,updated_by,created_at)
+  INSERT INTO dbo.products(category_id,code,name,brand,price,discount_price,image_url,description,status,created_by,updated_by,created_at)
   VALUES (@category_id,@code,@name,@brand,@price,@discount_price,@image_url,@description,@status,@created_by,@created_by,GETDATE())
+  SET @id = SCOPE_IDENTITY();
 END;
-
-CREATE PROCEDURE dbo.procedure_name2
-AS
-BEGIN
-    
-END;
+GO
 
 -- proc update user
 CREATE PROC [dbo].[sp_update_user]
@@ -232,4 +232,76 @@ BEGIN
 		END
 END;
 
+GO
+
+--TRIGGER tg_auto_create_cart
+CREATE TRIGGER tg_auto_create_cart
+ON dbo.customers
+AFTER INSERT,UPDATE
+AS
+BEGIN
+	IF EXISTS(SELECT * FROM Inserted)
+		BEGIN
+			DECLARE @customer_id INT
+			SELECT @customer_id = Inserted.id FROM Inserted
+			INSERT INTO dbo.carts( customer_id )
+			VALUES  (@customer_id)
+		END
+END
+
+GO
+
+-- PROD CREATE CART
+ALTER PROC [dbo].[sp_create_or_update_to_cart](
+@customer_id INT,
+@product_id INT,
+@quantity INT
+)
+AS
+BEGIN
+	IF EXISTS (SELECT * FROM dbo.customers WHERE id = @customer_id)
+		BEGIN
+			DECLARE @cart_id INT
+			SELECT @cart_id = carts.id FROM dbo.carts,dbo.customers, dbo.cart_items
+			WHERE customer_id = @customer_id AND customer_id = customers.id 
+			
+			IF EXISTS (SELECT * FROM dbo.cart_items WHERE product_id = @product_id and cart_id = @cart_id)
+				BEGIN
+					UPDATE dbo.cart_items
+					SET quantity = quantity + @quantity
+					WHERE product_id = @product_id and cart_id = @cart_id
+				END
+			ELSE
+				BEGIN
+					INSERT INTO dbo.cart_items( cart_id, product_id, quantity )
+					VALUES  (@cart_id , @product_id , @quantity)
+				END
+		END
+END
+GO
+
+--
+GO
+ALTER PROC [dbo].[sp_get_cart_by_customer_id](
+@customer_id INT
+)
+AS
+BEGIN
+	IF EXISTS(SELECT * FROM dbo.customers WHERE id = @customer_id)
+		BEGIN
+			SELECT 
+				item.id AS cart_item_id,
+				product.name AS product_name, 
+				item.product_id,
+				product.price AS product_price,
+				item.quantity, 
+				product.price * item.quantity AS into_money
+			FROM dbo.carts AS cart
+			JOIN dbo.cart_items AS item ON item.cart_id = cart.id
+			JOIN dbo.customers AS customer ON cart.customer_id = customer.id
+			JOIN dbo.products AS product ON item.product_id = product.id 
+			WHERE cart.customer_id = @customer_id
+		END
+	ELSE PRINT N'Khách hàng này không tồn tại trong CSDL'
+END
 

@@ -14,7 +14,7 @@ namespace DHMshop
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["customer"] != null)
+            if(Session["customer_id"] != null)
             {
                 Response.Redirect("home.aspx");
             }

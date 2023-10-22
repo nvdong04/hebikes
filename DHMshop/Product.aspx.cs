@@ -13,68 +13,15 @@ namespace DHMshop
         {
             if(!Page.IsPostBack)
             {
-                category.DataSource = DatabaseConnection.Instance.ExecuteQuery("Select * from tb_category");
-                category.DataBind();
-                Bind_Data();
-            }
-            load_data();
-            
+                BindProducts();
+            } 
         }
 
-        public void load_data()
+        protected void BindProducts()
         {
-            if (Request.QueryString["category"] != null)
-            {
-                int id = int.Parse(Request.QueryString["category"]);
-                string sql = "Select * from tb_products where category_id=" + id;
-                productList.DataSource = DatabaseConnection.Instance.ExecuteQuery(sql);
-                productList.DataBind();
-            }
-        }
-
-        public void Bind_Data()
-        {
-            productList.DataSource = DatabaseConnection.Instance.ExecuteQuery("Select * from tb_products");
-            productList.DataBind();
-
-            
-        }
-        protected void OnPagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
-        {
-            DataPager1.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
-            Bind_Data();
-            load_data();
-        }
-
-        protected void productList_ItemCommand(object sender, ListViewCommandEventArgs e)
-        {
-            if (Session["customer"] != null)
-            {
-                //var ddlSize = e.Item.FindControl("ddlSize") as DropDownList;
-                //var ddlColor = e.Item.FindControl("ddlColor") as DropDownList;
-                int product_id = int.Parse(productList.DataKeys[e.Item.DataItemIndex].Value.ToString());
-                int customer_id = int.Parse(Session["customer_id"].ToString());
-                int quantity = 1;
-                //int size = int.Parse(ddlSize.SelectedValue);
-                //string color = ddlColor.SelectedValue;
-                string sql = "EXEC dbo.sp_AddToCart @customer_id , @product_id , @quantity";
-                bool result = DatabaseConnection.Instance.ExecuteNonQuerySP(sql, new object[] { customer_id, product_id, quantity });
-                if (result)
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "click", "alert('Thêm sản phẩm vào giỏ hàng thành công');", true);
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "click", "alert('Thêm sản phẩm vào thất bại');", true);
-                }
-            }
-            else
-            {
-                if(!Page.IsPostBack)
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "click", "alert('Bạn phải đăng nhập trước khi thêm sản phẩm vào giỏ hàng');", true);
-                }
-            }
-        }
+            string sql = "select * from products";
+            lvProducts.DataSource = DatabaseConnection.Instance.ExecuteQuery(sql);
+            lvProducts.DataBind();          
+        }       
     }
 }

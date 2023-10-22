@@ -167,11 +167,11 @@
                     </div>
                 </div>
                 <asp:Button 
-                    ID="btnAddNewProduct" 
+                    ID="btnSaveProduct" 
                     runat="server" 
                     Text="Thêm sản phẩm" 
                     CssClass="btn inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white rounded-md focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800" 
-                    OnClick="btnAddProduct_Click"/>
+                    OnClick="btnSave_Click"/>
                 <%--<button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white btn rounded-md focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
                     Thêm sản phẩm
                 </button>--%>

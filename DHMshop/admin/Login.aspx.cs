@@ -14,7 +14,10 @@ namespace DHMshop.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["user_id"] != null)
+            {
+                Response.Redirect("dashboard.aspx");
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -25,17 +28,18 @@ namespace DHMshop.admin
                 String email = txtEmail.Text.Trim();
                 String pass = Utils.ComputeSha256Hash(txtPass.Text.Trim());
 
-                String sql = "SELECT COUNT(*) FROM dbo.customers WHERE email = '" + email + "' AND password = '" + pass + "'";
+                String sql = "SELECT COUNT(*) FROM dbo.users WHERE email = '" + email + "' AND password = '" + pass + "'";
                 int result = (int)DatabaseConnection.Instance.ExecuteScalar(sql);
                 if (result > 0)
                 {
-                    String sq1 = String.Format("SELECT * FROM dbo.customers WHERE email = '{0}'", email);
+                    String sq1 = String.Format("SELECT users.id as user_id,* FROM users LEFT JOIN roles ON roles.id = users.role_id WHERE email = '{0}'", email);
                     DataTable table = DatabaseConnection.Instance.ExecuteQuery(sq1);
                     DataRow row = table.Rows[0];
-                    Session["fullname"] = row["fullname"].ToString();
+                    Session["username"] = row["username"].ToString();
                     Session["email"] = email;
-                    Session["customer_id"] = row["id"].ToString();
-                    Response.Redirect("Dashboard.aspx");
+                    Session["user_id"] = row["user_id"].ToString();
+                    Session["role"] = row["role_name"].ToString();
+                    Response.Redirect("dashboard.aspx");
                 }
                 else
                 {
