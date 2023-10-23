@@ -17,7 +17,7 @@ namespace DHMshop.admin
             if (!IsPostBack)
             {
                 GetDataDropdown();
-                string acc = Request.QueryString["id"];
+                //string acc = Request.QueryString["id"];
                 IsUpdate = Request.QueryString["id"] != null ? true : false;              
                 if (IsUpdate)
                 {

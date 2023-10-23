@@ -1,4 +1,16 @@
 ﻿-- Active: 1697615275268@@localhost@1433@db_hebikes
+DROP TABLE categorys
+DROP TABLE products
+DROP TABLE roles
+DROP TABLE users
+DROP TABLE customers
+
+DROP TABLE cart_items
+DROP TABLE carts
+DROP TABLE order_details
+DROP TABLE orders
+
+
 
 create database [db_hebikes]
 GO
@@ -91,8 +103,9 @@ GO
 CREATE TABLE [orders] (
   [id] integer IDENTITY(1,1) PRIMARY KEY ,
   [customer_id] integer,
-  [order_date] timestamp,
+  [order_date] datetime,
   [note] nvarchar(255),
+  [order_total_price] decimal,
   [status] bit DEFAULT 0,
   [created_at] datetime,
   [updated_at] datetime
@@ -142,6 +155,16 @@ GO
 ALTER TABLE [products] ADD FOREIGN KEY ([updated_by]) REFERENCES [users] ([id])
 GO
 
+--init data
+INSERT INTO roles(role_name)
+values (N'admin'),
+(N'staff')
+
+INSERT INTO categorys(name,status)
+values (N'Xe đạp điện'),
+(N'Phụ kiện')
+
+GO
 --Proc
 SET ANSI_NULLS ON
 
@@ -302,6 +325,66 @@ BEGIN
 			JOIN dbo.products AS product ON item.product_id = product.id 
 			WHERE cart.customer_id = @customer_id
 		END
-	ELSE PRINT N'Khách hàng này không tồn tại trong CSDL'
+	ELSE PRINT N'Khách hàng này không tồn tại trên hệ thống'
+END
+
+GO
+
+CREATE PROC [dbo].[sp_create_order](
+@customer_id INT,
+@order_date DATETIME,
+@order_note NVARCHAR(255),
+@order_total_price FLOAT,
+@status bit
+)
+AS
+BEGIN
+	IF EXISTS (SELECT * FROM dbo.customers WHERE id = @customer_id)
+		BEGIN
+			INSERT INTO dbo.orders
+			        (	customer_id ,
+						order_date ,
+						note ,
+						order_total_price ,
+						status,
+						created_at,
+						updated_at
+			        )
+			VALUES  (	@customer_id , -- customer_id - int
+						@order_date , -- order_date - datetime
+						@order_note , -- order_note - ntext
+						@order_total_price , -- order_total_price - float
+						@status,  -- order_status - int
+						GETDATE(),
+						GETDATE()
+			        )
+			SELECT CAST(scope_identity() AS int);
+		END
+	ELSE 
+		BEGIN
+			RAISERROR (N'Khách hàng này không tồn tại trên hệ thống', 16, 1);
+			return 0
+		END
+END
+
+GO
+-- [sp_create_order_detail]
+CREATE PROC [dbo].[sp_create_order_detail](
+@order_id INT,
+@product_id INT,
+@quantity INT 
+)
+AS
+BEGIN
+	IF EXISTS(SELECT * FROM dbo.orders WHERE id = @order_id)
+		BEGIN
+			INSERT INTO dbo.order_details
+			        ( order_id, product_id, quantity )
+			VALUES  ( @order_id, -- order_id - int
+			          @product_id, -- product_id - int
+			          @quantity  -- quantity - int
+			          )
+			DELETE FROM dbo.cart_items WHERE product_id = @product_id
+		END
 END
 

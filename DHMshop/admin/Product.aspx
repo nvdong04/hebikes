@@ -1,6 +1,17 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/LayoutAdmin.Master" AutoEventWireup="true" CodeBehind="Product.aspx.cs" Inherits="DHMshop.admin.Product" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .ck-editor__editable[role="textbox"] {
+                /* editing area */
+                min-height: 200px;
+            }
+            .ck-content .image {
+                /* block images */
+                max-width: 80%;
+                margin: 20px auto;
+            }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section class="bg-white dark:bg-gray-900">
@@ -149,7 +160,7 @@
                             <span class="text-red-500">*</span>
                         </label>
                          <asp:TextBox 
-                            ID="txtDescription" 
+                            ID="txtDescription"
                             TextMode="MultiLine"
                             Rows="8"
                             CssClass="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" 
@@ -171,7 +182,7 @@
                     runat="server" 
                     Text="Thêm sản phẩm" 
                     CssClass="btn inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white rounded-md focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800" 
-                    OnClick="btnSave_Click"/>
+                    OnClick="btnCreate_Click"/>
                 <%--<button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white btn rounded-md focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
                     Thêm sản phẩm
                 </button>--%>
@@ -180,4 +191,11 @@
     </section>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolderScript" runat="server">
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#ContentPlaceHolder1_txtDescription'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 </asp:Content>

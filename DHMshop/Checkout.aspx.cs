@@ -28,7 +28,7 @@ namespace DHMshop
             if (Session["customer_id"] != null)
             {
                 int id = int.Parse(Session["customer_id"].ToString());
-                DataTable result = gioHang(id);
+                DataTable result = GetDataCartByCustomerId(id);
                 if (result.Rows.Count > 0)
                 {
                     gvCart.DataSource = result;
@@ -52,6 +52,7 @@ namespace DHMshop
         double total_price = 0;
         protected void gvCart_RowDataBound(object sender, GridViewRowEventArgs e)
         {           
+            //Tính total thành tiền
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 total_price = total_price + double.Parse(e.Row.Cells[4].Text);
@@ -70,7 +71,7 @@ namespace DHMshop
             if(order_id > 0 )
             {
                 int id = int.Parse(Session["customer_id"].ToString());
-                DataTable tbcart = gioHang(id);
+                DataTable tbcart = GetDataCartByCustomerId(id);
                 foreach(DataRow row in tbcart.Rows)
                 {
                     int product_id = int.Parse(row["product_id"].ToString());
@@ -83,18 +84,18 @@ namespace DHMshop
             }
         }
 
-        public DataTable gioHang(int id)
+        public DataTable GetDataCartByCustomerId(int id)
         {
             String sql = "EXEC dbo.[sp_get_cart_by_customer_id] @customer_id";
             DataTable result = DatabaseConnection.Instance.ExecuteQuerySP(sql, new object[] { id });
             return result;
         }
 
-        public int createOrder(int cusomer_id, DateTime order_date, string order_note, float order_total_price, int order_status)
+        public int createOrder(int customer_id, DateTime order_date, string order_note, float order_total_price, int order_status)
         {
             int order_id;
             string sql = "EXECUTE dbo.sp_CreateOrder @customer_id , @order_date , @order_note , @order_total_price , @order_status";
-            order_id = (int)DatabaseConnection.Instance.ExecuteScalarSP(sql, new object[] { cusomer_id, order_date, order_note, order_total_price, order_status });
+            order_id = (int)DatabaseConnection.Instance.ExecuteScalarSP(sql, new object[] { customer_id, order_date, order_note, order_total_price, order_status });
             return order_id;
 
         }

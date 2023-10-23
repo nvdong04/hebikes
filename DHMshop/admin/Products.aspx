@@ -4,119 +4,36 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="flex justify-between my-6">
     <div>
-        <h1 class="text-xl uppercase">Danh sách người dùng</h1>
+        <h1 class="text-xl uppercase">Danh sách sản phẩm</h1>
     </div>
     <a href="product.aspx" class="btn">Thêm sản phẩm</a>
 </div>
-
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-                <th scope="col" class="px-6 py-3">
-                    Product name
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Color
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Category
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Price
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Action
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Apple MacBook Pro 17"
-                </th>
-                <td class="px-6 py-4">
-                    Silver
-                </td>
-                <td class="px-6 py-4">
-                    Laptop
-                </td>
-                <td class="px-6 py-4">
-                    $2999
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Microsoft Surface Pro
-                </th>
-                <td class="px-6 py-4">
-                    White
-                </td>
-                <td class="px-6 py-4">
-                    Laptop PC
-                </td>
-                <td class="px-6 py-4">
-                    $1999
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Magic Mouse 2
-                </th>
-                <td class="px-6 py-4">
-                    Black
-                </td>
-                <td class="px-6 py-4">
-                    Accessories
-                </td>
-                <td class="px-6 py-4">
-                    $99
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Google Pixel Phone
-                </th>
-                <td class="px-6 py-4">
-                    Gray
-                </td>
-                <td class="px-6 py-4">
-                    Phone
-                </td>
-                <td class="px-6 py-4">
-                    $799
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Apple Watch 5
-                </th>
-                <td class="px-6 py-4">
-                    Red
-                </td>
-                <td class="px-6 py-4">
-                    Wearables
-                </td>
-                <td class="px-6 py-4">
-                    $999
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<asp:GridView 
+        ID="gvProducts" 
+        DataKeyNames="id"
+        AllowPaging="true"
+        AllowSorting="true"
+        AutoGenerateColumns="false"
+        CssClass="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+        OnRowDeleting="gvProducts_RowDeleting"
+        PageSize="2"
+        runat="server">
+        <HeaderStyle CssClass="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400" />
+        <RowStyle CssClass="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" />
+        <Columns> 
+            <asp:TemplateField HeaderText="STT" HeaderStyle-CssClass="px-6 py-3" ItemStyle-CssClass="px-6 py-4">
+                <ItemTemplate>
+                    <%# Container.DataItemIndex + 1 %>
+                </ItemTemplate>
+            </asp:TemplateField>           
+            <asp:BoundField DataField="category" HeaderText="Phân loại" HeaderStyle-CssClass="px-6 py-3" ItemStyle-CssClass="px-6 py-4" />
+            <asp:BoundField DataField="product" HeaderText="Tên sản phẩm" HeaderStyle-CssClass="px-6 py-3" ItemStyle-CssClass="px-6 py-4" />
+            <asp:BoundField DataField="code" HeaderText="Mã sản phẩm" HeaderStyle-CssClass="px-6 py-3" ItemStyle-CssClass="px-6 py-4 capitalize" />
+            <asp:BoundField DataField="brand" HeaderText="Thương hiệu" HeaderStyle-CssClass="px-6 py-3" ItemStyle-CssClass="px-6 py-4" />
+            <asp:BoundField DataField="price" HeaderText="Giá sản phẩm" HeaderStyle-CssClass="px-6 py-3" ItemStyle-CssClass="px-6 py-4" />
+            <asp:BoundField DataField="discount_price" HeaderText="Khuyến mại" HeaderStyle-CssClass="px-6 py-3" ItemStyle-CssClass="px-6 py-4" />
+            <asp:CheckBoxField DataField="status" HeaderText="Trạng thái" HeaderStyle-CssClass="px-6 py-3" ItemStyle-CssClass="px-6 py-4" />
+            <asp:BoundField DataField="created_at" HeaderText="Thời gian tạo" HeaderStyle-CssClass="px-6 py-3" ItemStyle-CssClass="px-6 py-4" />
+        </Columns>
+    </asp:GridView>
 </asp:Content>
