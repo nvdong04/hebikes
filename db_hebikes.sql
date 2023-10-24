@@ -12,8 +12,6 @@ DROP TABLE orders
 
 
 
-create database [db_hebikes]
-GO
 USE [db_hebikes]
 GO
 
@@ -161,8 +159,11 @@ values (N'admin'),
 (N'staff')
 
 INSERT INTO categorys(name,status)
-values (N'Xe đạp điện'),
-(N'Phụ kiện')
+values (N'Xe đạp điện',1),
+(N'Phụ kiện',1)
+
+INSERT INTO users(username,email,password,role_id,is_active,created_at,updated_at) 
+values('admin', N'admin@gmail.com','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92',1,1,GETDATE(),GETDATE())
 
 GO
 --Proc
@@ -176,7 +177,7 @@ GO
 
 
 -- PROCEDURE sp_create_product
-CREATE PROCEDURE dbo.sp_create_product
+ALTER PROCEDURE dbo.sp_create_product
 (
   @category_id integer,
   @code NVARCHAR(255),
@@ -200,7 +201,7 @@ GO
 
 
 -- PROCEDURE sp_update_product
-CREATE PROCEDURE dbo.sp_update_product
+ALTER PROCEDURE dbo.sp_update_product
 (
 	@product_id int,
 	@category_id integer,
@@ -224,7 +225,7 @@ BEGIN
 			name = @name, 
 			brand = @brand, 
 			price = @price, 
-			disount_price = @discount_price,
+			discount_price = @discount_price,
 			image_url = @image_url,
 			description = @description,
 			status = @status,
@@ -238,7 +239,7 @@ GO
 
 
 -- proc update user
-CREATE PROC [dbo].[sp_update_user]
+ALTER PROC [dbo].[sp_update_user]
 (
 	@user_id int,
 	@username NVARCHAR(100),
@@ -270,7 +271,7 @@ END;
 
 GO
 
-CREATE PROC [dbo].[sp_create_customer]
+ALTER PROC [dbo].[sp_create_customer]
 (
 	@fullname NVARCHAR(100),
 	@email VARCHAR(100),
@@ -324,20 +325,25 @@ BEGIN
 	IF EXISTS (SELECT * FROM dbo.customers WHERE id = @customer_id)
 		BEGIN
 			DECLARE @cart_id INT
-			SELECT @cart_id = carts.id FROM dbo.carts,dbo.customers, dbo.cart_items
-			WHERE customer_id = @customer_id AND customer_id = customers.id 
+			SELECT @cart_id = carts.id 
+			FROM dbo.carts join customers ON carts.customer_id = customers.id
+			WHERE customer_id = @customer_id
 			
-			IF EXISTS (SELECT * FROM dbo.cart_items WHERE product_id = @product_id and cart_id = @cart_id)
+			IF(@cart_id != 0)
 				BEGIN
-					UPDATE dbo.cart_items
-					SET quantity = quantity + @quantity
-					WHERE product_id = @product_id and cart_id = @cart_id
+					IF EXISTS (SELECT * FROM dbo.cart_items WHERE product_id = @product_id and cart_id = @cart_id)
+						BEGIN
+							UPDATE dbo.cart_items
+							SET quantity = quantity + @quantity
+							WHERE product_id = @product_id and cart_id = @cart_id
+						END
+					ELSE
+						BEGIN
+							INSERT INTO dbo.cart_items( cart_id, product_id, quantity )
+							VALUES  (@cart_id , @product_id , @quantity)
+						END
 				END
-			ELSE
-				BEGIN
-					INSERT INTO dbo.cart_items( cart_id, product_id, quantity )
-					VALUES  (@cart_id , @product_id , @quantity)
-				END
+			ELSE RAISERROR (N'Lỗi add to cart', 16, 1);
 		END
 END
 GO
@@ -426,4 +432,3 @@ BEGIN
 			DELETE FROM dbo.cart_items WHERE product_id = @product_id
 		END
 END
-

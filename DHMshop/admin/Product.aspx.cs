@@ -23,6 +23,7 @@ namespace DHMshop.admin
                 {
                     //lbStatus.Visible = true;
                     GetDataForUpdate();
+                    RequiredFieldValidatorImageProduct.Enabled = false;
                     btnSaveProduct.Text = "Cập nhật";
                     btnSaveProduct.Click += new EventHandler(btnUpdate_Click);
                 }
@@ -49,6 +50,7 @@ namespace DHMshop.admin
             txtProductCode.Text = row["code"].ToString();
             txtBrand.Text = row["brand"].ToString();
             txtProductPrice.Text = row["price"].ToString();
+            txtDiscountPrice.Text = row["discount_price"].ToString();
             txtDescription.Text = row["description"].ToString();
             ddlCategory.SelectedValue = row["category_id"].ToString();
             image_url = row["image_url"].ToString();

@@ -14,7 +14,6 @@ namespace DHMshop.admin
             if (!Page.IsPostBack)
             {
                 BindProducts();
-                gvProducts.HeaderRow.TableSection = TableRowSection.TableHeader;
             }
         }
 
@@ -27,7 +26,10 @@ namespace DHMshop.admin
 
         protected void gvProducts_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-
+            string id = gvProducts.DataKeys[e.RowIndex].Value.ToString();
+            String sql = "DELETE FROM dbo.products WHERE id =" + id;
+            bool result = DatabaseConnection.Instance.ExecuteNonQuery(sql);
+            BindProducts();
         }
     }
 }

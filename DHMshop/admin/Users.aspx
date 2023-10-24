@@ -16,7 +16,7 @@
         AutoGenerateColumns="false"
         CssClass="w-full text-sm text-left text-gray-500 dark:text-gray-400"
         OnRowDeleting="gvUsers_RowDeleting"
-        PageSize="2"
+        PageSize="10"
         runat="server">
         <HeaderStyle CssClass="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400" />
         <RowStyle CssClass="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" />
@@ -31,6 +31,31 @@
             <asp:BoundField DataField="role_name" HeaderText="Vai trò" HeaderStyle-CssClass="px-6 py-3" ItemStyle-CssClass="px-6 py-4 capitalize" />
             <asp:BoundField DataField="is_active" HeaderText="Trạng thái" HeaderStyle-CssClass="px-6 py-3" ItemStyle-CssClass="px-6 py-4" />
             <asp:BoundField DataField="created_at" HeaderText="Thời gian tạo" HeaderStyle-CssClass="px-6 py-3" ItemStyle-CssClass="px-6 py-4" />
+            <asp:TemplateField HeaderStyle-CssClass="px-6 py-3" ItemStyle-CssClass="px-6 py-4">
+                <EditItemTemplate>
+                    <asp:TextBox ID="txtid" Text='<%# Eval("id") %>' runat="server"></asp:TextBox>
+                </EditItemTemplate>
+                <ItemTemplate>
+                    <asp:LinkButton 
+                        ID="LinkButton1"
+                        CssClass="underline text-blue-600"
+                        PostBackUrl='<%# String.Format("~/admin/user.aspx?id={0}", Eval("id")) %>' 
+                        runat="server">Cập nhật</asp:LinkButton>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField ShowHeader="False" HeaderStyle-CssClass="px-6 py-3" ItemStyle-CssClass="px-6 py-4">
+                <ItemTemplate>
+                    <asp:LinkButton 
+                        ID="LinkButton2" 
+                        runat="server"
+                        CssClass="underline text-blue-600"
+                        CausesValidation="False" 
+                        OnClientClick="return confirm('Bạn có chắc chắn muốn xóa k?');" 
+                        CommandName="Delete" 
+                        Text="Xoá">
+                    </asp:LinkButton>
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
     </asp:GridView>
 </asp:Content>

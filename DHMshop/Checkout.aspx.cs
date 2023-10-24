@@ -49,14 +49,15 @@ namespace DHMshop
             lbAdress.Text = row["address"].ToString();
             lbPhoneNumber.Text = row["phone"].ToString();            
         }
-        double total_price = 0;
+        private decimal total_price = 0;
         protected void gvCart_RowDataBound(object sender, GridViewRowEventArgs e)
         {           
             //Tính total thành tiền
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                total_price = total_price + double.Parse(e.Row.Cells[4].Text);
+                total_price = total_price + decimal.Parse(e.Row.Cells[4].Text);
                 lbTotalPrice.Text = String.Format("{0:000,000}đ", total_price);
+                lbTotalPrice.Attributes.Add("value", total_price.ToString());
             }
         }
 
@@ -65,9 +66,9 @@ namespace DHMshop
             int customer_id = int.Parse(Session["customer_id"].ToString());
             DateTime order_date = DateTime.Now;
             string order_note = txtOrderNote.Text.Trim();
-            float order_total_price = float.Parse(lbTotalPrice.Text);
+            decimal order_total_price = decimal.Parse(lbTotalPrice.Attributes["value"].ToString());
             int order_status = 0;
-            int order_id = createOrder(customer_id,order_date,order_note,order_total_price,order_status);
+            int order_id = CreateOrder(customer_id,order_date,order_note,order_total_price,order_status);
             if(order_id > 0 )
             {
                 int id = int.Parse(Session["customer_id"].ToString());
@@ -76,11 +77,13 @@ namespace DHMshop
                 {
                     int product_id = int.Parse(row["product_id"].ToString());
                     int quantity = int.Parse(row["quantity"].ToString());
-                    createOrderDetail(order_id, product_id, quantity);
+                    CreateOrderDetail(order_id, product_id, quantity);
                 }
 
-                Response.Write("Đăng ký tài khoản thành công");
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "click", "alert('Đặt hàng thành công.Nhấn oke để chuyển đến trang đăng nhập'); setTimeout(function(){window.location.href ='../../home.aspx'}, 3000);", true);
+                // Hiện thông báo thêm thành công
+                Utils.ShowToastr(this, "Đặt hàng thành công", "Thông báo", Utils.ToastType.Success);
+                //Chuyển hướng sang /admin/users.aspx sau 1.5s
+                Utils.DelayRedirect(this, "checkoutsuccess.aspx", 1000);
             }
         }
 
@@ -91,16 +94,16 @@ namespace DHMshop
             return result;
         }
 
-        public int createOrder(int customer_id, DateTime order_date, string order_note, float order_total_price, int order_status)
+        public int CreateOrder(int customer_id, DateTime order_date, string order_note, decimal order_total_price, int order_status)
         {
             int order_id;
-            string sql = "EXECUTE dbo.sp_CreateOrder @customer_id , @order_date , @order_note , @order_total_price , @order_status";
+            string sql = "EXECUTE dbo.[sp_create_order] @customer_id , @order_date , @order_note , @order_total_price , @status";
             order_id = (int)DatabaseConnection.Instance.ExecuteScalarSP(sql, new object[] { customer_id, order_date, order_note, order_total_price, order_status });
             return order_id;
 
         }
 
-        public void createOrderDetail(int order_id, int product_id, int quantity)
+        public void CreateOrderDetail(int order_id, int product_id, int quantity)
         {
             String sql = "EXEC dbo.sp_create_order_detail @order_id , @product_id , @quantity";
             DatabaseConnection.Instance.ExecuteNonQuerySP(sql, new object[] { 

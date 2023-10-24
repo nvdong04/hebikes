@@ -13,12 +13,11 @@ namespace DHMshop.admin
         {
             if(!Page.IsPostBack)
             {
-                GetUsers();
-                gvUsers.HeaderRow.TableSection = TableRowSection.TableHeader;
+                BindUsers();
             }
         }
 
-        private void GetUsers()
+        private void BindUsers()
         {
             string sql = "select * from users left join roles on roles.id = users.role_id";
             gvUsers.DataSource = DatabaseConnection.Instance.ExecuteQuery(sql).DefaultView;
@@ -27,7 +26,10 @@ namespace DHMshop.admin
 
         protected void gvUsers_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-
+            string id = gvUsers.DataKeys[e.RowIndex].Value.ToString();
+            String sql = "DELETE FROM dbo.users WHERE id =" + id;
+            bool result = DatabaseConnection.Instance.ExecuteNonQuery(sql);
+            BindUsers();
         }
     }
 }
