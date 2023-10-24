@@ -12,6 +12,7 @@ namespace DHMshop.admin
     public partial class Product : System.Web.UI.Page
     {
         private bool IsUpdate = false;
+        string image_url = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!Page.IsPostBack)
@@ -41,11 +42,17 @@ namespace DHMshop.admin
         private void GetDataForUpdate()
         {
             int id = Int32.Parse(Request.QueryString["id"]);
-            string query = String.Format("SELECT * FROM dbo.users where id={0}", id);
+            string query = String.Format("SELECT * FROM dbo.products where id={0}", id);
             DataTable table = DatabaseConnection.Instance.ExecuteQuery(query);
             DataRow row = table.Rows[0];
-            
-            cbStatus.Checked = Convert.ToInt32(row["is_active"]) == 1;
+            txtProductName.Text = row["name"].ToString();
+            txtProductCode.Text = row["code"].ToString();
+            txtBrand.Text = row["brand"].ToString();
+            txtProductPrice.Text = row["price"].ToString();
+            txtDescription.Text = row["description"].ToString();
+            ddlCategory.SelectedValue = row["category_id"].ToString();
+            image_url = row["image_url"].ToString();
+            cbStatus.Checked = Convert.ToInt32(row["status"]) == 1;
         }
 
         bool CheckFileType(string fileName)
@@ -79,7 +86,7 @@ namespace DHMshop.admin
                     return fileName;
                 }
             }
-            return "";
+            return String.Empty;
         }
 
         protected void btnCreate_Click(object sender, EventArgs e)
@@ -88,13 +95,14 @@ namespace DHMshop.admin
             {
                 string product_name = txtProductName.Text.Trim();
                 string code = txtProductCode.Text.Trim();
-                string brand = txtBrand.Text.Trim();
-                string image_url = uploadImageProduct();
+                string brand = txtBrand.Text.Trim();           
                 float price = float.Parse(txtProductPrice.Text.Trim());
                 float discount_price = float.Parse(txtDiscountPrice.Text.Trim());
                 int status = cbStatus.Checked ? 1 : 0;
                 int category_id = Int32.Parse(ddlCategory.SelectedValue);
                 string description = txtDescription.Text.Trim();
+                string uploadURLResult = uploadImageProduct();
+                image_url = uploadURLResult == String.Empty ? image_url : uploadURLResult;
                 int user_id = Int32.Parse(Session["user_id"].ToString());
 
                 string sql = "EXEC dbo.sp_create_product @category_id , @code , @name , @brand , @price , @discount_price , @image_url , @description , @status , @created_by";                         
@@ -124,36 +132,37 @@ namespace DHMshop.admin
         {
             if (Page.IsValid)
             {
+                int product_id = Int32.Parse(Request.QueryString["id"]);
                 string product_name = txtProductName.Text.Trim();
                 string code = txtProductCode.Text.Trim();
                 string brand = txtBrand.Text.Trim();
                 string image_url = uploadImageProduct();
                 float price = float.Parse(txtProductPrice.Text.Trim());
-                float discount_price = float.Parse(txtDiscountPrice.Text.Trim());
+                float discount_price = txtDiscountPrice.Text.Trim() != "" ? float.Parse(txtDiscountPrice.Text.Trim()) : 0;
                 int status = cbStatus.Checked ? 1 : 0;
                 int category_id = Int32.Parse(ddlCategory.SelectedValue);
                 string description = txtDescription.Text.Trim();
                 int user_id = Int32.Parse(Session["user_id"].ToString());
 
-                string sql = "EXEC dbo.sp_create_product @category_id , @code , @name , @brand , @price , @discount_price , @image_url , @description , @status , @created_by";
+                string sql = "EXEC dbo.sp_update_product @product_id , @category_id , @code , @name , @brand , @price , @discount_price , @image_url , @description , @status , @updated_by";
                 try
                 {
-                    bool result = DatabaseConnection.Instance.ExecuteNonQuerySP(sql, new object[] { category_id, code, product_name, brand, price, discount_price, image_url, description, status, user_id });
+                    bool result = DatabaseConnection.Instance.ExecuteNonQuerySP(sql, new object[] { product_id,category_id, code, product_name, brand, price, discount_price, image_url, description, status, user_id });
                     if (result)
                     {
                         // Hiện thông báo thêm thành công
-                        Utils.ShowToastr(this, "Thêm sản phẩm thành công", "Thông báo", Utils.ToastType.Success);
+                        Utils.ShowToastr(this, "Cập nhật sản phẩm thành công", "Thông báo", Utils.ToastType.Success);
                         //Chuyển hướng sang /admin/products.aspx sau 1.5s
                         Utils.DelayRedirect(this, "../admin/products.aspx", 1500);
                     }
                     else
                     {
-                        Utils.ShowToastr(this, "Thêm sản phẩm thất bại. Vui lòng thử lại!", "Thông báo", Utils.ToastType.Error);
+                        Utils.ShowToastr(this, "Cập nhật sản phẩm thất bại. Vui lòng thử lại!", "Thông báo", Utils.ToastType.Error);
                     }
                 }
                 catch (Exception ex)
                 {
-                    Utils.ShowToastr(this, "Lỗi", "Thông báo", Utils.ToastType.Error);
+                    Utils.ShowToastr(this, ex.Message, "Thông báo", Utils.ToastType.Error);
                 }
             }
         }

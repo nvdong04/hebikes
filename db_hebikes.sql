@@ -198,6 +198,45 @@ BEGIN
 END;
 GO
 
+
+-- PROCEDURE sp_update_product
+CREATE PROCEDURE dbo.sp_update_product
+(
+	@product_id int,
+	@category_id integer,
+	@code NVARCHAR(255),
+	@name NVARCHAR(255),
+	@brand NVARCHAR(255),
+	@price float,
+	@discount_price float,
+	@image_url NVARCHAR(255),
+	@description ntext,
+	@status bit,
+	@updated_by integer
+)
+AS
+BEGIN
+	IF EXISTS (SELECT id FROM products WHERE id = @product_id) 
+		BEGIN
+			UPDATE products
+			SET category_id = @category_id, 
+			code = @code, 
+			name = @name, 
+			brand = @brand, 
+			price = @price, 
+			disount_price = @discount_price,
+			image_url = @image_url,
+			description = @description,
+			status = @status,
+			updated_by = @updated_by,
+			updated_at = GETDATE()
+			WHERE id = @product_id
+		END
+	ELSE RAISERROR ('Sản phẩm không tồn vài với id: %s',16,1,@product_id)
+END;
+GO
+
+
 -- proc update user
 CREATE PROC [dbo].[sp_update_user]
 (
