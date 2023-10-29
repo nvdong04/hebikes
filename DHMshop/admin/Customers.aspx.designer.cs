@@ -7,29 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DHMshop
+namespace DHMshop.admin
 {
 
 
-    public partial class product
+    public partial class Customers
     {
 
         /// <summary>
-        /// rpCategorys control.
+        /// gvCustomers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rpCategorys;
-
-        /// <summary>
-        /// lvProducts control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView lvProducts;
+        protected global::System.Web.UI.WebControls.GridView gvCustomers;
     }
 }

@@ -16,6 +16,7 @@ namespace DHMshop
         protected float discount_price;
         protected string image_url;
         protected string description;
+        protected string category;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,7 +33,7 @@ namespace DHMshop
 
         public void BindProductById(int id)
         {
-            string sql = "select * from products where id = " + id;
+            string sql = "select p.*,c.name as category from products as p left join categorys as c on p.category_id = c.id where p.id = " + id;
             DataTable table = DatabaseConnection.Instance.ExecuteQuery(sql);
             DataRow row = table.Rows[0];
             product_name = row["name"].ToString();
@@ -41,6 +42,7 @@ namespace DHMshop
             discount_price = float.Parse(row["discount_price"].ToString());
             image_url = row["image_url"].ToString();
             description = row["description"].ToString();
+            category = row["category"].ToString();
         }
 
         protected void btnAddToCart_Click(object sender, EventArgs e)

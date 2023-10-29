@@ -14,7 +14,9 @@ namespace DHMshop
             if(!Page.IsPostBack)
             {
                 BindProducts();
-            } 
+                BindCategory();
+            }
+            BindProductsWithCategory();
         }
 
         protected void BindProducts()
@@ -22,6 +24,25 @@ namespace DHMshop
             string sql = "select * from products";
             lvProducts.DataSource = DatabaseConnection.Instance.ExecuteQuery(sql);
             lvProducts.DataBind();          
-        }       
+        }
+
+        public void BindProductsWithCategory()
+        {
+            if (Request.QueryString["category"] != null)
+            {
+                int category_id = int.Parse(Request.QueryString["category"]);
+                string sql = "select * from products where category_id = " + category_id;
+                lvProducts.DataSource = DatabaseConnection.Instance.ExecuteQuery(sql);
+                lvProducts.DataBind();
+            }
+        }
+
+        private void BindCategory()
+        {
+            // query tất cả role
+            string sql = "select id, name from categorys";
+            rpCategorys.DataSource = DatabaseConnection.Instance.ExecuteQuery(sql);
+            rpCategorys.DataBind();
+        }
     }
 }

@@ -2,6 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <%if (Session["role"].ToString() == DHMshop.enums.Role.admin.ToString())
+    {%>
     <section class="bg-white dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
             <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Thêm mới người dùng</h2>
@@ -99,6 +101,13 @@
             <!-- end form tag -->
         </div>
     </section>
+     <%}
+     else
+     {%>
+ <div class="flex justify-center content-center items-center mt-20">
+     <h1 class="text-red-600 font-medium text-lg">Bạn không có quyền truy cập module này</h1>
+ </div>
+ <%} %>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolderScript" runat="server">
 </asp:Content>

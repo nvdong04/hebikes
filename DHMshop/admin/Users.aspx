@@ -2,6 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <%if (Session["role"].ToString() == DHMshop.enums.Role.admin.ToString())
+        {%>
     <div class="flex justify-between my-6">
         <div>
             <h1 class="text-xl uppercase">Danh sách người dùng</h1>
@@ -58,6 +60,13 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
+    <%}
+        else
+        {%>
+    <div class="flex justify-center content-center items-center mt-20">
+        <h1 class="text-red-600 font-medium text-lg">Bạn không có quyền truy cập module này</h1>
+    </div>
+    <%} %>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolderScript" runat="server">
 </asp:Content>

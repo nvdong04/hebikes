@@ -88,6 +88,7 @@
                     <asp:TextBox
                         ID="txtProductPrice"
                         TextMode="Number"
+                        min="1"
                         CssClass="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         placeholder="Eg: 1,200,000đ"
                         runat="server">
@@ -99,6 +100,17 @@
                         Display="Dynamic"
                         ErrorMessage="Trường thông tin bắt buộc">
                     </asp:RequiredFieldValidator>
+                    <asp:RangeValidator 
+                        ID="RangeValidator1" 
+                        ControlToValidate="txtProductPrice" 
+                        MinimumValue="1" 
+                        MaximumValue="99999999999" 
+                        Type="Double" 
+                        runat="server"
+                        Display="Dynamic"
+                        ForeColor="Red" CssClass="text-sm"
+                        ErrorMessage="Giá sản phẩm phải lớn hơn 1">
+                    </asp:RangeValidator>
                     <%--<input type="number" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Eg: 1,200,000đ" required="">--%>
                 </div>
                 <div class="w-full">
@@ -106,10 +118,22 @@
                     <asp:TextBox
                         ID="txtDiscountPrice"
                         TextMode="Number"
+                        min="0"
                         CssClass="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         placeholder="Eg: 10%"
                         runat="server">
                     </asp:TextBox>
+                    <asp:RangeValidator 
+                        ID="RangeValidator2" 
+                        ControlToValidate="txtDiscountPrice" 
+                        MinimumValue="0" 
+                        MaximumValue="100" 
+                        Type="Double" 
+                        runat="server"
+                        Display="Dynamic"
+                        ForeColor="Red" CssClass="text-sm"
+                        ErrorMessage="Khuyến mãi phải nằm trong khoảng từ 0 - 100%">
+                    </asp:RangeValidator>
                     <%--<input type="number" name="discount_price" id="discount_price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Eg: 10%" required="">--%>
                 </div>
                 <div class="sm:col-span-2">

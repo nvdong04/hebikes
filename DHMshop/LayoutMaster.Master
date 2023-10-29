@@ -9,10 +9,8 @@
     </asp:ContentPlaceHolder>
     <link href="assets/css/normalize.css" rel="stylesheet" />
     <link href="assets/css/base.css" rel="stylesheet" />
-    <%--<link href="assets/css/untility.css" rel="stylesheet" />--%>
     <link href="assets/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap&subset=vietnamese" rel="stylesheet">
-
     <script src="assets/tailwindcss/tailwindcss.js"></script>
     <link href="assets/flowbite/flowbite.min.css" rel="stylesheet" />
     <link href="assets/toastr/toastr.min.css" rel="stylesheet" />
