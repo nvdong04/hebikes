@@ -48,6 +48,7 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -278,6 +279,7 @@
     <Content Include="assets\flowbite\flowbite.min.css" />
     <Content Include="assets\flowbite\flowbite.min.js" />
     <Content Include="assets\javascript\all.min.js" />
+    <Content Include="assets\javascript\chart.js" />
     <Content Include="assets\jquery\jquery.min.js" />
     <Content Include="assets\tailwindcss\tailwindcss.js" />
     <Content Include="assets\toastr\toastr.min.css" />

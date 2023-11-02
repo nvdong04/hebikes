@@ -432,3 +432,43 @@ BEGIN
 			DELETE FROM dbo.cart_items WHERE product_id = @product_id
 		END
 END
+
+
+-- Số đơn hàng theo ngày
+SELECT
+    DATEPART(YEAR, order_date) AS order_year,
+    DATEPART(MONTH, order_date) AS order_month,
+    DATEPART(DAY, order_date) AS order_day,
+    COUNT(id) AS order_count
+FROM
+    orders
+GROUP BY
+    DATEPART(YEAR, order_date),
+    DATEPART(MONTH, order_date),
+    DATEPART(DAY, order_date)
+ORDER BY
+    order_year, order_month, order_day;
+
+-- Số đơn hàng theo tháng
+SELECT
+    DATEPART(YEAR, order_date) AS order_year,
+    DATEPART(MONTH, order_date) AS order_month,
+    COUNT(id) AS order_count
+FROM
+    orders
+GROUP BY
+    DATEPART(YEAR, order_date),
+    DATEPART(MONTH, order_date)
+ORDER BY
+    order_year, order_month;
+
+-- Số đơn hàng theo năm
+SELECT
+    DATEPART(YEAR, order_date) AS order_year,
+    COUNT(id) AS order_count
+FROM
+    orders
+GROUP BY
+    DATEPART(YEAR, order_date)
+ORDER BY
+    order_year;
