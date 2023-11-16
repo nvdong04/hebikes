@@ -10,7 +10,7 @@ namespace DHMshop.admin
 {
     public partial class User : System.Web.UI.Page
     {
-        private bool IsUpdate = false;
+        protected bool IsUpdate = false;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,8 +23,6 @@ namespace DHMshop.admin
                 {
                     lbStatus.Visible = true;
                     GetDataForUpdate();
-                    btnCreateUser.Text = "Cập nhật";  
-                    btnCreateUser.Click += new EventHandler(btnUpdateUser_Click);
                 }
             }
         }
@@ -54,7 +52,7 @@ namespace DHMshop.admin
 
         protected void btnCreateUser_Click(object sender, EventArgs e) 
         {
-            if(Page.IsValid)
+             if(Page.IsValid)
             {
                 //Lấy giá trị trong các input tag
                 string username = txtUsername.Text.Trim();
@@ -98,19 +96,21 @@ namespace DHMshop.admin
                 string password = txtPassword.Text.Trim();
                 string email = txtEmail.Text.Trim();
                 int role_id = Convert.ToInt32(ddlRole.SelectedValue);
+                bool is_active =cbStatus.Checked;
+
                 //Mã hoá password
                 string encode_password = Utils.ComputeSha256Hash(password);
 
-                string sql = "EXEC dbo.sp_update_user @user_id @username , @email , @password , @role_id";
+                string sql = "EXEC dbo.sp_update_user @user_id , @username , @email , @password , @role_id , @is_active";
                 try
                 {
-                    bool result = DatabaseConnection.Instance.ExecuteNonQuerySP(sql, new object[] { user_id, username, email, encode_password, role_id });
+                    bool result = DatabaseConnection.Instance.ExecuteNonQuerySP(sql, new object[] { user_id, username, email, encode_password, role_id,is_active  });
                     if (result)
                     {
                         // Hiện thông báo thêm thành công
                         Utils.ShowToastr(this,"Cập nhật người dùng thành công", "Thông báo", Utils.ToastType.Success);
                         //Chuyển hướng sang /admin/users.aspx sau 1.5s
-                        Utils.DelayRedirect(this, "../admin/users.aspx", 1500);
+                        Utils.DelayRedirect(this, "../admin/users.aspx", 1000);
                     }
                     else
                     {

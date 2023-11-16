@@ -11,7 +11,7 @@ namespace DHMshop.admin
 {
     public partial class Product : System.Web.UI.Page
     {
-        private bool IsUpdate = false;
+        protected bool IsUpdate = false;
         string image_url = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,10 +24,8 @@ namespace DHMshop.admin
                     //lbStatus.Visible = true;
                     GetDataForUpdate();
                     RequiredFieldValidatorImageProduct.Enabled = false;
-                    btnSaveProduct.Text = "Cập nhật";
-                    btnSaveProduct.Click += new EventHandler(btnUpdate_Click);
                 }
-            }
+            }           
         }
 
         private void BindDataDropDown()
@@ -116,7 +114,7 @@ namespace DHMshop.admin
                         // Hiện thông báo thêm thành công
                         Utils.ShowToastr(this, "Thêm sản phẩm thành công", "Thông báo", Utils.ToastType.Success);
                         //Chuyển hướng sang /admin/products.aspx sau 1.5s
-                        Utils.DelayRedirect(this, "../admin/products.aspx", 1500);
+                        Utils.DelayRedirect(this, "../admin/products.aspx", 1000);
                     }
                     else
                     {
@@ -155,7 +153,7 @@ namespace DHMshop.admin
                         // Hiện thông báo thêm thành công
                         Utils.ShowToastr(this, "Cập nhật sản phẩm thành công", "Thông báo", Utils.ToastType.Success);
                         //Chuyển hướng sang /admin/products.aspx sau 1.5s
-                        Utils.DelayRedirect(this, "../admin/products.aspx", 1500);
+                        Utils.DelayRedirect(this, "../admin/products.aspx", 1000);
                     }
                     else
                     {

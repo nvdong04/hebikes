@@ -214,15 +214,24 @@
                     <%--<textarea id="description" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nhập mô tả của bạn tại đây"></textarea>--%>
                 </div>
             </div>
-            <asp:Button
-                ID="btnSaveProduct"
-                runat="server"
-                Text="Thêm sản phẩm"
-                CssClass="btn inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white rounded-md focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
-                OnClick="btnCreate_Click" />
-            <%--<button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white btn rounded-md focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-                    Thêm sản phẩm
-                </button>--%>
+                <%if (IsUpdate)
+                    { %>
+                <asp:Button 
+                    ID="btnUpdateProduct" 
+                    runat="server" 
+                    Text="Cập nhật" 
+                    CssClass="btn inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white rounded-md focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800" 
+                    OnClick="btnUpdate_Click"/> 
+                <%}
+                    else
+                    { %>
+                    <asp:Button 
+                    ID="btnCreateProduct" 
+                    runat="server" 
+                    Text="Thêm sản phẩm" 
+                    CssClass="btn inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white rounded-md focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800" 
+                    OnClick="btnCreate_Click"/>  
+            <%} %>
             <!-- end form tag -->
         </div>
     </section>

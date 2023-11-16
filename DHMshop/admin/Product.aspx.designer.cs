@@ -168,12 +168,21 @@ namespace DHMshop.admin
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator1;
 
         /// <summary>
-        /// btnSaveProduct control.
+        /// btnUpdateProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSaveProduct;
+        protected global::System.Web.UI.WebControls.Button btnUpdateProduct;
+
+        /// <summary>
+        /// btnCreateProduct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCreateProduct;
     }
 }

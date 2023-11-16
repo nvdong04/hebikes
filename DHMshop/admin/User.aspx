@@ -3,7 +3,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <%if (Session["role"].ToString() == DHMshop.enums.Role.admin.ToString())
-    {%>
+    {
+
+%>
     <section class="bg-white dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
             <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Thêm mới người dùng</h2>
@@ -92,12 +94,24 @@
                     </div>
                     
                 </div>
+                <%if (IsUpdate)
+                    { %>
                 <asp:Button 
+                    ID="btnUpdateUser" 
+                    runat="server" 
+                    Text="Cập nhật" 
+                    CssClass="btn inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white rounded-md focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800" 
+                    OnClick="btnUpdateUser_Click"/> 
+                <%}
+                    else
+                    { %>
+                    <asp:Button 
                     ID="btnCreateUser" 
                     runat="server" 
                     Text="Thêm người dùng" 
                     CssClass="btn inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white rounded-md focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800" 
-                    OnClick="btnCreateUser_Click"/>             
+                    OnClick="btnCreateUser_Click"/>  
+            <%} %>
             <!-- end form tag -->
         </div>
     </section>
